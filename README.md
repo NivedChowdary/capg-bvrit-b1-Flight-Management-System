@@ -1,7 +1,6 @@
 # capg-bvrit-b1-Flight-Management-System
 
 contributors
----------------------------------------------------
 0.Mentors - Javeed(javeed512), RamanujDas(ram1ujdx)
 1.Keerthi Sree - Login module
 2.Karthikeshwarrao - Checking availability of flight
