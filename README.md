@@ -10,4 +10,3 @@ contributors
 #6.Nived - Scheduling Flights
 #7.Meghana - Cancel, Modify Flights
 #8.Harshitha - View details of flight and schedule.
-----------------------------------------------------
