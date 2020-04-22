@@ -3,7 +3,7 @@
 # contributors
 # 0.Mentors - Javeed(javeed512), RamanujDas(ram1ujdx)
 # 1.Keerthi Sree - Login module
-# 2.Karthikeshwarrao - Checking availability of flight
+# 2.Karthikeswar Rao - Checking availability of flight
 # 3.Sakshi - Cancel, Modification of Bookings
 # 4.Srinidhi - Add and View Flight Bookings
 # 5.Geetha - Add flights
