@@ -1,14 +1,14 @@
 package com.capg.fms.scheduleflights.model;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Booking {
 
 	private BigInteger bookingId;
 	private User userId;
-	private Date bookingDate;
+	private LocalDate bookingDate;
 	private List<Passenger> passengerList;
 	private double ticketCost;
 	private Flight flight;
@@ -30,11 +30,11 @@ public class Booking {
 		this.userId = userId;
 	}
 
-	public Date getBookingDate() {
+	public LocalDate getBookingDate() {
 		return bookingDate;
 	}
 
-	public void setBookingDate(Date bookingDate) {
+	public void setBookingDate(LocalDate bookingDate) {
 		this.bookingDate = bookingDate;
 	}
 
