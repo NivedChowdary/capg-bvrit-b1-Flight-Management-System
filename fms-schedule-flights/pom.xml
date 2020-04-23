@@ -11,7 +11,7 @@
 	<groupId>com.capg.fms</groupId>
 	<artifactId>fms-schedule-flights</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>fms-schedule-flights</name>
 	<description>scheduling of flights</description>
 
