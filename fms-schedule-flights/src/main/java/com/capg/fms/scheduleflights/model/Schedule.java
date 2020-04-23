@@ -9,6 +9,19 @@ public class Schedule {
 	private LocalDate arrivalTime;
 	private LocalDate departureTime;
 
+	public Schedule() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Schedule(Airport sourceAirport, Airport destinationAirport, LocalDate arrivalTime, LocalDate departureTime) {
+		super();
+		this.sourceAirport = sourceAirport;
+		this.destinationAirport = destinationAirport;
+		this.arrivalTime = arrivalTime;
+		this.departureTime = departureTime;
+	}
+
 	public Airport getSourceAirport() {
 		return sourceAirport;
 	}

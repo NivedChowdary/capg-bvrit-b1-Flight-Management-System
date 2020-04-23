@@ -6,6 +6,18 @@ public class Airport {
 	private String airportCode;
 	private String airportLocation;
 
+	public Airport() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Airport(String airportName, String airportCode, String airportLocation) {
+		super();
+		this.airportName = airportName;
+		this.airportCode = airportCode;
+		this.airportLocation = airportLocation;
+	}
+
 	public String getAirportName() {
 		return airportName;
 	}

@@ -14,6 +14,23 @@ public class Booking {
 	private Flight flight;
 	private int noOfPassengers;
 
+	public Booking() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Booking(BigInteger bookingId, User userId, LocalDate bookingDate, List<Passenger> passengerList,
+			double ticketCost, Flight flight, int noOfPassengers) {
+		super();
+		this.bookingId = bookingId;
+		this.userId = userId;
+		this.bookingDate = bookingDate;
+		this.passengerList = passengerList;
+		this.ticketCost = ticketCost;
+		this.flight = flight;
+		this.noOfPassengers = noOfPassengers;
+	}
+
 	public BigInteger getBookingId() {
 		return bookingId;
 	}
