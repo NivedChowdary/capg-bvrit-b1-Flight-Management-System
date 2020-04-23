@@ -1,13 +1,13 @@
-package com.capg.fsm.modifybooking;
+package com.capg.fms.modifybooking;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FsmModifyBookingApplication {
+public class FmsModifyBookingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FsmModifyBookingApplication.class, args);
+		SpringApplication.run(FmsModifyBookingApplication.class, args);
 	}
 
 }
