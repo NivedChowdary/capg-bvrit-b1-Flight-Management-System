@@ -9,6 +9,19 @@ public class Flight {
 	public String carrierName;
 	public int seatCapacity;
 
+	public Flight() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Flight(BigInteger flightNumber, String flightModel, String carrierName, int seatCapacity) {
+		super();
+		this.flightNumber = flightNumber;
+		this.flightModel = flightModel;
+		this.carrierName = carrierName;
+		this.seatCapacity = seatCapacity;
+	}
+
 	public BigInteger getFlightNumber() {
 		return flightNumber;
 	}
