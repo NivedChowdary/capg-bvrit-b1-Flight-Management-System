@@ -10,6 +10,21 @@ public class Passenger {
 	private BigInteger passengerUIN;
 	private double luggage;
 
+	public Passenger() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Passenger(BigInteger pnrNumber, String passengerName, int passengerAge, BigInteger passengerUIN,
+			double luggage) {
+		super();
+		this.pnrNumber = pnrNumber;
+		this.passengerName = passengerName;
+		this.passengerAge = passengerAge;
+		this.passengerUIN = passengerUIN;
+		this.luggage = luggage;
+	}
+
 	public BigInteger getPnrNumber() {
 		return pnrNumber;
 	}

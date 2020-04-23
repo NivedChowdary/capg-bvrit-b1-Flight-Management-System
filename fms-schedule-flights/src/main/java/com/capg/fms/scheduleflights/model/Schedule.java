@@ -1,13 +1,26 @@
 package com.capg.fms.scheduleflights.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Schedule {
 
 	private Airport sourceAirport;
 	private Airport destinationAirport;
-	private Date arrivalTime;
-	private Date departureTime;
+	private LocalDate arrivalTime;
+	private LocalDate departureTime;
+
+	public Schedule() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Schedule(Airport sourceAirport, Airport destinationAirport, LocalDate arrivalTime, LocalDate departureTime) {
+		super();
+		this.sourceAirport = sourceAirport;
+		this.destinationAirport = destinationAirport;
+		this.arrivalTime = arrivalTime;
+		this.departureTime = departureTime;
+	}
 
 	public Airport getSourceAirport() {
 		return sourceAirport;
@@ -25,19 +38,19 @@ public class Schedule {
 		this.destinationAirport = destinationAirport;
 	}
 
-	public Date getArrivalTime() {
+	public LocalDate getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(Date arrivalTime) {
+	public void setArrivalTime(LocalDate arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
-	public Date getDepartureTime() {
+	public LocalDate getDepartureTime() {
 		return departureTime;
 	}
 
-	public void setDepartureTime(Date departureTime) {
+	public void setDepartureTime(LocalDate departureTime) {
 		this.departureTime = departureTime;
 	}
 
