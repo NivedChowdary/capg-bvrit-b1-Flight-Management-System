@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.capg.fma</groupId>
-	<artifactId>fms-login-module</artifactId>
+	<artifactId>fms-login-ms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>fms-login-module</name>
+	<name>fms-login-ms</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -35,6 +35,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>com.oracle.ojdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -44,6 +49,10 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 	</dependencies>
 
