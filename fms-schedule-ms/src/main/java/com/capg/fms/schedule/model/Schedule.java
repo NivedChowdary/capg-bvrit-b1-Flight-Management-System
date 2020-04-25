@@ -2,13 +2,8 @@ package com.capg.fms.schedule.model;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class Schedule {
 
-	@Id
 	private Airport sourceAirport;
 	private Airport destinationAirport;
 	private LocalDateTime arrivalTime;

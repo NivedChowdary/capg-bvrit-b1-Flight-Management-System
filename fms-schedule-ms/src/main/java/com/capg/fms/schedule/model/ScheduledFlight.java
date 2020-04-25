@@ -1,12 +1,7 @@
 package com.capg.fms.schedule.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class ScheduledFlight {
 
-	@Id
 	private Flight flight;
 	private int availableSeats;
 	private Schedule schedule;

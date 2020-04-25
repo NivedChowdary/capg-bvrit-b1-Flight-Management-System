@@ -1,12 +1,7 @@
 package com.capg.fms.schedule.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class Airport {
 
-	@Id
 	private String airportName;
 	private String airportCode;
 	private String airportLocation;
