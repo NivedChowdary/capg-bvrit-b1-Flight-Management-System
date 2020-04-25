@@ -1,6 +1,6 @@
 package com.capg.fms.schedule.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,15 +11,16 @@ public class Schedule {
 	@Id
 	private Airport sourceAirport;
 	private Airport destinationAirport;
-	private LocalDate arrivalTime;
-	private LocalDate departureTime;
+	private LocalDateTime arrivalTime;
+	private LocalDateTime departureTime;
 
 	public Schedule() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Schedule(Airport sourceAirport, Airport destinationAirport, LocalDate arrivalTime, LocalDate departureTime) {
+	public Schedule(Airport sourceAirport, Airport destinationAirport, LocalDateTime arrivalTime,
+			LocalDateTime departureTime) {
 		super();
 		this.sourceAirport = sourceAirport;
 		this.destinationAirport = destinationAirport;
@@ -43,19 +44,19 @@ public class Schedule {
 		this.destinationAirport = destinationAirport;
 	}
 
-	public LocalDate getArrivalTime() {
+	public LocalDateTime getArrivalTime() {
 		return arrivalTime;
 	}
 
-	public void setArrivalTime(LocalDate arrivalTime) {
+	public void setArrivalTime(LocalDateTime arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
 
-	public LocalDate getDepartureTime() {
+	public LocalDateTime getDepartureTime() {
 		return departureTime;
 	}
 
-	public void setDepartureTime(LocalDate departureTime) {
+	public void setDepartureTime(LocalDateTime departureTime) {
 		this.departureTime = departureTime;
 	}
 

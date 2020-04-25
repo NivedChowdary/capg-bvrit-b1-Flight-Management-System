@@ -1,14 +1,13 @@
 package com.capg.fms.schedule.model;
 
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Booking {
 
 	private long bookingId;
 	private User userId;
-	private LocalDate bookingDate;
+	private LocalDateTime bookingDate;
 	private List<Passenger> passengerList;
 	private double ticketCost;
 	private Flight flight;
@@ -19,7 +18,7 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(long bookingId, User userId, LocalDate bookingDate, List<Passenger> passengerList,
+	public Booking(long bookingId, User userId, LocalDateTime bookingDate, List<Passenger> passengerList,
 			double ticketCost, Flight flight, int noOfPassengers) {
 		super();
 		this.bookingId = bookingId;
@@ -47,11 +46,11 @@ public class Booking {
 		this.userId = userId;
 	}
 
-	public LocalDate getBookingDate() {
+	public LocalDateTime getBookingDate() {
 		return bookingDate;
 	}
 
-	public void setBookingDate(LocalDate bookingDate) {
+	public void setBookingDate(LocalDateTime bookingDate) {
 		this.bookingDate = bookingDate;
 	}
 
