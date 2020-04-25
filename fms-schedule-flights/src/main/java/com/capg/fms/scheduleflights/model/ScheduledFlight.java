@@ -6,6 +6,18 @@ public class ScheduledFlight {
 	private int availableSeats;
 	private Schedule schedule;
 
+	public ScheduledFlight() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ScheduledFlight(Flight flight, int availableSeats, Schedule schedule) {
+		super();
+		this.flight = flight;
+		this.availableSeats = availableSeats;
+		this.schedule = schedule;
+	}
+
 	public Flight getFlight() {
 		return flight;
 	}
