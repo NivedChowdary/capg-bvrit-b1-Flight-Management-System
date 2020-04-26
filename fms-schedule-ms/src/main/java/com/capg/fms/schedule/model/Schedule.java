@@ -7,11 +7,23 @@ import javax.persistence.Id;
 @Entity
 public class Schedule {
 
+
 	@Id
 	private int scheduleId;// not mentioned in case study .......
-	private Airport sourceAirport;
-	private Airport destinationAirport;
+	
+	//private Airport sourceAirport;
+
+	
+	private String sourceAirport;
+	
+	
+	//private Airport destinationAirport;
+	
+	private String destinationAirport;
+	
+
 	private LocalDateTime arrivalTime;
+
 	private LocalDateTime departureTime;
 
 	public Schedule() {
@@ -19,7 +31,7 @@ public class Schedule {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Schedule(int scheduleId, Airport sourceAirport, Airport destinationAirport, LocalDateTime arrivalTime,
+	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, LocalDateTime arrivalTime,
 			LocalDateTime departureTime) {
 		super();
 		this.scheduleId = scheduleId;
@@ -37,19 +49,19 @@ public class Schedule {
 		this.scheduleId = scheduleId;
 	}
 
-	public Airport getSourceAirport() {
+	public String getSourceAirport() {
 		return sourceAirport;
 	}
 
-	public void setSourceAirport(Airport sourceAirport) {
+	public void setSourceAirport(String sourceAirport) {
 		this.sourceAirport = sourceAirport;
 	}
 
-	public Airport getDestinationAirport() {
+	public String getDestinationAirport() {
 		return destinationAirport;
 	}
 
-	public void setDestinationAirport(Airport destinationAirport) {
+	public void setDestinationAirport(String destinationAirport) {
 		this.destinationAirport = destinationAirport;
 	}
 

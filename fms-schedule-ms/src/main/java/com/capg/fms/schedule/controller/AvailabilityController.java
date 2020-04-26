@@ -24,10 +24,12 @@ public class AvailabilityController {
 	
 	@PostConstruct
 	public void init() {
-		Flight flight=new Flight(334464577L, "Airways", "GSM", 100);
-		Airport airport=new Airport("Rajiv Gandhi", "13234HFF", "Shamshabad");
-		Schedule schedule=new Schedule(101,airport, airport, LocalDateTime.of(2020, 04, 25, 10, 30),LocalDateTime.of(2020, 04, 25, 12, 00));
-		ScheduledFlight scheduledFlight=new ScheduledFlight(101, 21, 334464577L, schedule, schedule, schedule, schedule, 6000);		
+		Flight flight=new Flight(4724489326L, "Air ways", "DLF", 100);
+		Airport airport=new Airport("Rajiv Ganndhi", "354fgdf", "Shamshabad");
+		Schedule schedule=new Schedule(101, "Hyderabad", "Pune", 
+				LocalDateTime.of(2020, 04, 25, 10, 30), LocalDateTime.of(2020, 04, 25, 12, 30));	
+		ScheduledFlight scheduledFlight=new ScheduledFlight(101, 20, 4724489326L, schedule, schedule, schedule, schedule, 6000);
+//		service.getFlightById(scheduledFlight);			
 	}
 	
 	@GetMapping("/{flightNumber}")
@@ -35,4 +37,12 @@ public class AvailabilityController {
 		Flight flight=service.getFlightById(flightNumber);
 		return new ResponseEntity<Flight>(flight,HttpStatus.FOUND);
 	}
+	
+	@GetMapping("/flights/{flightNumber}/{availableSeats}")
+	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) {
+		if(availableSeats>0) {
+			return true;
+		}
+		return false;	
+	}	
 }
