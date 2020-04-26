@@ -19,11 +19,8 @@ public class ScheduledFlight {
 									// because both are from same module
 
 	private Schedule destinationAirport;
-
 	private Schedule arrivalTime;
-
 	private Schedule departureTime;
-
 	private long ticketcost;
 
 	public ScheduledFlight() {

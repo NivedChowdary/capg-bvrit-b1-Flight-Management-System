@@ -26,8 +26,8 @@ public class AvailabilityController {
 	public void init() {
 		Flight flight=new Flight(334464577L, "Airways", "GSM", 100);
 		Airport airport=new Airport("Rajiv Gandhi", "13234HFF", "Shamshabad");
-		Schedule schedule=new Schedule(airport, airport, LocalDateTime.of(2020, 04, 25, 10, 30),LocalDateTime.of(2020, 04, 25, 12, 00));
-		ScheduledFlight scheduledFlight=new ScheduledFlight(flight, 20, schedule);		
+		Schedule schedule=new Schedule(101,airport, airport, LocalDateTime.of(2020, 04, 25, 10, 30),LocalDateTime.of(2020, 04, 25, 12, 00));
+		ScheduledFlight scheduledFlight=new ScheduledFlight(101, 21, 334464577L, schedule, schedule, schedule, schedule, 6000);		
 	}
 	
 	@GetMapping("/{flightNumber}")

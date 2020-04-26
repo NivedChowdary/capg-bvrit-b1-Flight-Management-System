@@ -7,16 +7,11 @@ import javax.persistence.Id;
 @Entity
 public class Schedule {
 
-
 	@Id
 	private int scheduleId;// not mentioned in case study .......
-
 	private Airport sourceAirport;
-
 	private Airport destinationAirport;
-
 	private LocalDateTime arrivalTime;
-
 	private LocalDateTime departureTime;
 
 	public Schedule() {
