@@ -9,9 +9,14 @@ import javax.persistence.Id;
 public class Schedule {
 
 	@Id
+	private int scheduleId;// not mentioned in case study .......
+
 	private Airport sourceAirport;
+
 	private Airport destinationAirport;
+
 	private LocalDateTime arrivalTime;
+
 	private LocalDateTime departureTime;
 
 	public Schedule() {
@@ -19,13 +24,22 @@ public class Schedule {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Schedule(Airport sourceAirport, Airport destinationAirport, LocalDateTime arrivalTime,
+	public Schedule(int scheduleId, Airport sourceAirport, Airport destinationAirport, LocalDateTime arrivalTime,
 			LocalDateTime departureTime) {
 		super();
+		this.scheduleId = scheduleId;
 		this.sourceAirport = sourceAirport;
 		this.destinationAirport = destinationAirport;
 		this.arrivalTime = arrivalTime;
 		this.departureTime = departureTime;
+	}
+
+	public int getScheduleId() {
+		return scheduleId;
+	}
+
+	public void setScheduleId(int scheduleId) {
+		this.scheduleId = scheduleId;
 	}
 
 	public Airport getSourceAirport() {
@@ -62,8 +76,8 @@ public class Schedule {
 
 	@Override
 	public String toString() {
-		return "Schedule [sourceAirport=" + sourceAirport + ", destinationAirport=" + destinationAirport
-				+ ", arrivalTime=" + arrivalTime + ", departureTime=" + departureTime + "]";
+		return "Schedule [scheduleId=" + scheduleId + ", sourceAirport=" + sourceAirport + ", destinationAirport="
+				+ destinationAirport + ", arrivalTime=" + arrivalTime + ", departureTime=" + departureTime + "]";
 	}
 
 }
