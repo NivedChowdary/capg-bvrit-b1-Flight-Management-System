@@ -1,7 +1,5 @@
 package com.capg.fms.schedule.model;
 
-
-
 public class User {
 
 	private String userType;

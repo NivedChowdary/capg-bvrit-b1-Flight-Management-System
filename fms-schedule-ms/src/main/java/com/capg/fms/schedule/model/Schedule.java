@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 @Entity
 public class Schedule {
+
 
 	@Id
 	private int scheduleId;// not mentioned in case study .......
