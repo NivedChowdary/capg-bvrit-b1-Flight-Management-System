@@ -1,7 +1,16 @@
 package com.capg.fms.flight.model;
 
-public class Flight {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Flight")
+public class Flight {
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public long flightNumber;
 	public String flightModel;
 	public String carrierName;
