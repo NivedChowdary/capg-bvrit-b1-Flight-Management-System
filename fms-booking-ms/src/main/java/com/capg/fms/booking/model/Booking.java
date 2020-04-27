@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="booking_info")
@@ -16,28 +15,31 @@ public class Booking {
     
 	@Id
 	private long bookingId;
-	private User userId;
-	
-	@DateTimeFormat(pattern="yyyy/MM/ddThh:mm:ss")
+//  private User userId;
+	private long userId;
 	private LocalDate bookingDate;
 	
 	@ElementCollection
 	private List<Long> passengerList;
+   //private List<Passenger> passengerList;
 	private double ticketCost;
-	private Flight flight;
+	
+//	@OneToOne(cascade = CascadeType.ALL,mappedBy = "flight")
+//	private Flight flight;
+	private long flightNumber;
 	private int noOfPassengers;
 
 	public Booking() {	}
 
-	public Booking(long bookingId, User userId, LocalDate bookingDate, List<Long> passengerList, double ticketCost,
-			Flight flight, int noOfPassengers) {
+	public Booking(long bookingId, long userId, LocalDate bookingDate, List<Long> passengerList, double ticketCost,
+			long flightNumber, int noOfPassengers) {
 		super();
 		this.bookingId = bookingId;
 		this.userId = userId;
 		this.bookingDate = bookingDate;
 		this.passengerList = passengerList;
 		this.ticketCost = ticketCost;
-		this.flight = flight;
+		this.flightNumber = flightNumber;
 		this.noOfPassengers = noOfPassengers;
 	}
 
@@ -50,12 +52,12 @@ public class Booking {
 	}
 
 
-	public User getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
 
-	public void setUserId(User userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -89,31 +91,27 @@ public class Booking {
 		this.ticketCost = ticketCost;
 	}
 
-
-	public Flight getFlight() {
-		return flight;
+	
+	public long getFlightNumber() {
+		return flightNumber;
 	}
 
-
-	public void setFlight(Flight flight) {
-		this.flight = flight;
+	public void setFlightNumber(long flightNumber) {
+		this.flightNumber = flightNumber;
 	}
-
 
 	public int getNoOfPassengers() {
 		return noOfPassengers;
 	}
 
-
 	public void setNoOfPassengers(int noOfPassengers) {
 		this.noOfPassengers = noOfPassengers;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", userId=" + userId + ", bookingDate=" + bookingDate
-				+ ", passengerList=" + passengerList + ", ticketCost=" + ticketCost + ", flight=" + flight
+				+ ", passengerList=" + passengerList + ", ticketCost=" + ticketCost + ", flightNumber=" + flightNumber
 				+ ", noOfPassengers=" + noOfPassengers + "]";
 	}
 
