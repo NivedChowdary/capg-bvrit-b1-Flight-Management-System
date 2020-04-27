@@ -28,7 +28,7 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 
 	
 	public boolean validateEmail(String email)  {
-	      String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+	      String regex = "[A-Za-z0-9]+@[A-Za-z]+\\.[A-Za-z]{2,4}";
 	      if(email.matches(regex))
 	    	  return true;
 	      else
@@ -38,6 +38,7 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 
 	public boolean validateId(long id) {
 		int count=0;
+		long p=id;
 		long d;
 		while(id>0) {
 			d=id % 10;
@@ -47,10 +48,38 @@ public class UserAccountCreationServiceImpl implements IUserAccountCreationServi
 		if(count!=12)
 			throw new InvalidInputException("ID should be of 12 digits");	
 			
-		else
-			return true;
+		else if(repo.existsByUserId(p)==true) {
+			 throw new InvalidInputException("User with userId ["+p+"] already exists");
+		}
+		return true;
+			
 	}
 	
+	public boolean validatePassword(String password) {
+		String regex="[(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$])]{8,}";
+		if(password.matches(regex)) {
+			return true;
+		}
+		else 
+			throw new InvalidInputException("Password should contain:- [uppercase ,lowercase ,numeric ,any of these characters={'@','$','#'} ,should contain atleast 8 characters]");
+	}
 	
+	public boolean validateUserName(String userName) {
+		
+		String regex="[(?=.*[A-Za-z])(?=.*[0-9].{2,4})]{8,}";
+		if(userName.matches(regex)) {
+			return true;
+		}
+		else 
+			throw new InvalidInputException("Username should contain atleast 8 alphanumeric characters");
+	}
+	
+	public boolean validateUserType(String userType) {
+		if((userType.toLowerCase()).equals("admin") || (userType.toLowerCase()).equals("user")){
+			return true;
+		}
+		else 
+			throw new InvalidInputException("UserType should be either USER or ADMIN");
+	}
 
 }
