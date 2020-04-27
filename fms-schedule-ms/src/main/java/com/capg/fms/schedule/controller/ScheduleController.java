@@ -21,39 +21,30 @@ public class ScheduleController {
 	@Autowired
 	ScheduleServiceImpl service;
 
-	@PostMapping("/addscheduledflight")
-	public ScheduledFlight addScheduleFlight(ScheduledFlight scheduledFlight) {
-		ScheduledFlight scheduleFlight1 = service.addScheduleFlight(scheduledFlight);
-		return scheduleFlight1;
+	@PostMapping("/add")
+	public ScheduledFlight addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
+		
+	return service.addScheduleFlight(scheduledFlight);	
+		
 	}
-
-	@GetMapping("/getscheduledflight{scheduleId}")
+	@GetMapping("/id/{scheduleId}")
 	public ScheduledFlight viewScheduledFlight(@PathVariable int scheduleId) {
-
+		
 		return service.viewScheduledFlight(scheduleId);
-
 	}
-
-	@GetMapping(value = "/getallscheduledflight")
+	@GetMapping("/viewall")
 	public List<ScheduledFlight> viewScheduledFlight() {
-
+		
 		return service.viewScheduledFlight();
-
 	}
-
-	@PostMapping("/modifyscheduledflight")
-	public ScheduledFlight modifyScheduledFlight(@PathVariable long flightNumber, @RequestBody Schedule schedule,
-			@PathVariable int scheduleId) {
-
-		ScheduledFlight scheduledFlight = service.modifyScheduledFlight(flightNumber, schedule, scheduleId);
-
-		return scheduledFlight;
-
-	}
-
-	@DeleteMapping("/deletescheduledflight/{scheduleid}")
-	public String deleteScheduledFlight(@PathVariable int scheduleId) {
+	@DeleteMapping("/delete/{scheduleId}")
+	public void deleteScheduledFlight(int scheduleId) {
 		service.deleteScheduledFlight(scheduleId);
-		return "Flight schedule deleted";
 	}
+	@PostMapping
+	public ScheduledFlight modifyScheduledFlight(int scheduledFlightId, int availableSeats, long flightNumber, Schedule schedule) {
+		
+		return service.modifyScheduledFlight(scheduledFlightId, availableSeats, flightNumber, schedule);
+	}
+	
 }

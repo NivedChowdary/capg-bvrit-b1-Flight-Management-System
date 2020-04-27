@@ -13,7 +13,7 @@ public interface IScheduleService {
 	
 	public List<ScheduledFlight> viewScheduledFlight();
 
-	public ScheduledFlight modifyScheduledFlight(long flightNumber, Schedule schedule, int scheduleId);
+	public ScheduledFlight modifyScheduledFlight( int scheduledFlightId,int availableSeats, long flightNumber, Schedule schedule);
 	
 	public void deleteScheduledFlight(int scheduleId);
 
