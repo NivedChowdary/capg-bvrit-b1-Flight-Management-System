@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.capg.fms.schedule.model.Airport;
-import com.capg.fms.schedule.model.Flight;
+
+import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.model.Schedule;
 import com.capg.fms.schedule.model.ScheduledFlight;
 import com.capg.fms.schedule.service.IAvailabilityService;
@@ -23,26 +23,31 @@ public class AvailabilityController {
 	IAvailabilityService service;
 	
 	@PostConstruct
-	public void init() {
-		Flight flight=new Flight(4724489326L, "Air ways", "DLF", 100);
-		Airport airport=new Airport("Rajiv Ganndhi", "354fgdf", "Shamshabad");
+	public void init() {		
 		Schedule schedule=new Schedule(101, "Hyderabad", "Pune", 
 				LocalDateTime.of(2020, 04, 25, 10, 30), LocalDateTime.of(2020, 04, 25, 12, 30));	
-		ScheduledFlight scheduledFlight=new ScheduledFlight(101, 20, 4724489326L, schedule, schedule, schedule, schedule, 6000);
-//		service.getFlightById(scheduledFlight);			
+		ScheduledFlight scheduledFlight=new ScheduledFlight(101, 20, 4724489326L, schedule);
+		
 	}
 	
 	@GetMapping("/{flightNumber}")
-	public ResponseEntity<Flight> getFlightById(@PathVariable long flightNumber) {
-		Flight flight=service.getFlightById(flightNumber);
-		return new ResponseEntity<Flight>(flight,HttpStatus.FOUND);
+	public ResponseEntity<ScheduledFlight> getFlightById(@PathVariable long flightNumber) {
+		ScheduledFlight flight=service.getFlightById(flightNumber);
+		return new ResponseEntity<ScheduledFlight>(flight,HttpStatus.FOUND);
 	}
 	
-	@GetMapping("/flights/{flightNumber}/{availableSeats}")
-	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) {
-		if(availableSeats>0) {
-			return true;
-		}
-		return false;	
-	}	
+	@GetMapping("/{flightNumber}/{availableSeats}")
+	public void checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) throws SeatsAreNotAvailableException {
+		service.checkSeatAvailability(flightNumber, availableSeats);
+	}
 }
+
+//@GetMapping("/{flightNumber}")
+//public ResponseEntity<Flight> getFlightById(@PathVariable long flightNumber) {
+//	Flight flight=service.getFlightById(flightNumber);
+//	return new ResponseEntity<Flight>(flight,HttpStatus.FOUND);
+//}
+
+
+//Airport airport=new Airport("Rajiv Ganndhi", "354fgdf", "Shamshabad");
+//Flight flight=new Flight(4724489326L, "Air ways", "DLF", 100);
