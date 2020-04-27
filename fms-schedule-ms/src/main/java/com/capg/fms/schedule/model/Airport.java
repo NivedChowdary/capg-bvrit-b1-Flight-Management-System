@@ -1,19 +1,13 @@
 package com.capg.fms.schedule.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class Airport {
 
-	@Id
 	private String airportName;
 	private String airportCode;
 	private String airportLocation;
 
 	public Airport() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Airport(String airportName, String airportCode, String airportLocation) {

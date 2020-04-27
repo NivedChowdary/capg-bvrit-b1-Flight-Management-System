@@ -4,14 +4,25 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 @Entity
 public class Schedule {
 
 	@Id
-	private Airport sourceAirport;
-	private Airport destinationAirport;
+	private int scheduleId;// not mentioned in case study .......
+	
+	//private Airport sourceAirport;
+
+	
+	private String sourceAirport;
+	
+	
+	//private Airport destinationAirport;
+	
+	private String destinationAirport;
+	
+
 	private LocalDateTime arrivalTime;
+
 	private LocalDateTime departureTime;
 
 	public Schedule() {
@@ -19,28 +30,37 @@ public class Schedule {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Schedule(Airport sourceAirport, Airport destinationAirport, LocalDateTime arrivalTime,
+	public Schedule(int scheduleId, String sourceAirport, String destinationAirport, LocalDateTime arrivalTime,
 			LocalDateTime departureTime) {
 		super();
+		this.scheduleId = scheduleId;
 		this.sourceAirport = sourceAirport;
 		this.destinationAirport = destinationAirport;
 		this.arrivalTime = arrivalTime;
 		this.departureTime = departureTime;
 	}
 
-	public Airport getSourceAirport() {
+	public int getScheduleId() {
+		return scheduleId;
+	}
+
+	public void setScheduleId(int scheduleId) {
+		this.scheduleId = scheduleId;
+	}
+
+	public String getSourceAirport() {
 		return sourceAirport;
 	}
 
-	public void setSourceAirport(Airport sourceAirport) {
+	public void setSourceAirport(String sourceAirport) {
 		this.sourceAirport = sourceAirport;
 	}
 
-	public Airport getDestinationAirport() {
+	public String getDestinationAirport() {
 		return destinationAirport;
 	}
 
-	public void setDestinationAirport(Airport destinationAirport) {
+	public void setDestinationAirport(String destinationAirport) {
 		this.destinationAirport = destinationAirport;
 	}
 
@@ -62,8 +82,8 @@ public class Schedule {
 
 	@Override
 	public String toString() {
-		return "Schedule [sourceAirport=" + sourceAirport + ", destinationAirport=" + destinationAirport
-				+ ", arrivalTime=" + arrivalTime + ", departureTime=" + departureTime + "]";
+		return "Schedule [scheduleId=" + scheduleId + ", sourceAirport=" + sourceAirport + ", destinationAirport="
+				+ destinationAirport + ", arrivalTime=" + arrivalTime + ", departureTime=" + departureTime + "]";
 	}
 
 }

@@ -1,22 +1,14 @@
 package com.capg.fms.schedule.model;
 
-
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class Flight {
 
-	@Id
 	public long flightNumber;
 	public String flightModel;
 	public String carrierName;
 	public int seatCapacity;
 
 	public Flight() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 
 	public Flight(long flightNumber, String flightModel, String carrierName, int seatCapacity) {
