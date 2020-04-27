@@ -1,11 +1,11 @@
 package com.capg.fms.schedule.service;
 
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
-import com.capg.fms.schedule.model.Flight;
+import com.capg.fms.schedule.model.ScheduledFlight;
 
 public interface IAvailabilityService {
 
-	Flight getFlightById(long flightNumber);
+	ScheduledFlight getFlightById(long flightNumber);
 	
-	boolean checkSeatAvailability(long flightNumber,int availableSeats) throws SeatsAreNotAvailableException;
+	ScheduledFlight checkSeatAvailability(long flightNumber,int availableSeats) throws SeatsAreNotAvailableException;
 }
