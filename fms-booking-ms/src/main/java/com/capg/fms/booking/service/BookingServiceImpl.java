@@ -36,7 +36,7 @@ public class BookingServiceImpl implements IBookingService  {
 		booking.setBookingDate(newBooking.getBookingDate());
 		booking.setPassengerList(newBooking.getPassengerList());
 		booking.setTicketCost(newBooking.getTicketCost());
-		booking.setFlight(newBooking.getFlight());
+		booking.setFlightNumber(newBooking.getFlightNumber());
 		booking.setNoOfPassengers(newBooking.getNoOfPassengers());
 		return booking;
 	}

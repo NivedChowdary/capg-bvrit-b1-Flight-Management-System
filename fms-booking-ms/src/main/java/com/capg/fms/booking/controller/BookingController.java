@@ -1,6 +1,10 @@
 package com.capg.fms.booking.controller;
 
+
 import java.util.List;
+
+//import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +23,7 @@ public class BookingController {
 	@Autowired
 	IBookingService service;
 	
+
 	@GetMapping("/id/{bookingId}")
 	public Booking getBooking(@PathVariable long bookingId) {
 		return service.getBooking(bookingId);

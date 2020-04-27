@@ -25,7 +25,7 @@ import com.capg.fms.flight.service.FlightServiceImpl;
 @RestController
 @RequestMapping("/flights")
 public class FlightController {
-	/* http://localhost:1234/flight/add
+	/* http://localhost:9085/flights/flight/add
 	* POSTMAN (Post : body{ "flightModel" : "SpiceJet", "carrierName" : "air", "seatCapacity" : 50 })
 	* Don't insert number, number is :@GeneratedValue(strategy =GenerationType.SEQUENCE)
 	*/

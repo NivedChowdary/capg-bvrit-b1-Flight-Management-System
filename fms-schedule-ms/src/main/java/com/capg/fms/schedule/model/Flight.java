@@ -1,17 +1,28 @@
 package com.capg.fms.schedule.model;
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+=======
+import javax.persistence.Id;
 
+@Entity
+public class Flight {
+>>>>>>> branch 'master' of https://github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
+
+<<<<<<< HEAD
 @Entity
 @Table(name="Flight")
 public class Flight {
     
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+=======
+	@Id
+>>>>>>> branch 'master' of https://github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
 	public long flightNumber;
 	public String flightModel;
 	public String carrierName;
