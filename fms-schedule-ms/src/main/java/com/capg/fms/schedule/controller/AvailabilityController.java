@@ -29,7 +29,7 @@ public class AvailabilityController {
 		ScheduledFlight scheduledFlight=new ScheduledFlight(101, 20, 4724489326L, schedule);
 		
 	}
-	
+
 	@GetMapping("/{flightNumber}")
 	public ResponseEntity<ScheduledFlight> getFlightById(@PathVariable long flightNumber) {
 		ScheduledFlight flight=service.getFlightById(flightNumber);

@@ -1,12 +1,15 @@
 package com.capg.fms.passenger.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-
+@Entity
 public class Passenger {
-
+     
 	private long passengerNum;
 	private String passengerName;
 	private int passengerAge;
+	@Id
 	private long passengerUIN;
 	private double luggage;
 
@@ -15,8 +18,7 @@ public class Passenger {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Passenger(long passengerNum, String passengerName, int passengerAge, long passengerUIN,
-			double luggage) {
+	public Passenger(long passengerNum, String passengerName, int passengerAge, long passengerUIN, double luggage) {
 		super();
 		this.passengerNum = passengerNum;
 		this.passengerName = passengerName;
@@ -25,7 +27,6 @@ public class Passenger {
 		this.luggage = luggage;
 	}
 
-	
 	public long getPassengerNum() {
 		return passengerNum;
 	}

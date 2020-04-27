@@ -13,7 +13,9 @@ public class ScheduledFlight {
 	@Column(name = "scheduledFlightId")
 	private int scheduledFlightId;// Not mentioned in DTO but, according to document methods, these are included
 
+
 	@Column(name = "availableSeats")
+
 	private int availableSeats;
 	// private Schedule schedule;
 
@@ -71,8 +73,4 @@ public class ScheduledFlight {
 		return "ScheduledFlight [scheduledFlightId=" + scheduledFlightId + ", availableSeats=" + availableSeats
 				+ ", flightNumber=" + flightNumber + ", schedule=" + schedule + "]";
 	}
-
-	
-	
-	
 }

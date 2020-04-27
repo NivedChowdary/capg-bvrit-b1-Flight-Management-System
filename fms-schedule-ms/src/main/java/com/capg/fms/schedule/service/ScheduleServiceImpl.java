@@ -24,8 +24,7 @@ public class ScheduleServiceImpl implements IScheduleService {
 	
 	@Override
 	public ScheduledFlight addScheduleFlight(ScheduledFlight scheduledFlight) {
-		// TODO Auto-generated method stub
-		return repo.save(scheduledFlight);
+		 return repo.save(scheduledFlight);
 	}
 
 	@Override
@@ -41,20 +40,19 @@ public class ScheduleServiceImpl implements IScheduleService {
 	}
 
 	@Override
-	public ScheduledFlight modifyScheduledFlight(long flightNumber, Schedule schedule, int scheduleId) {
-		// TODO Auto-generated method stub
-		/*
-		 * ScheduledFlight scheduledFlight = repo.findById(scheduleId).get();
-		 * if(scheduledFlight != null) {
-		 * scheduleFlightobj.setArrivalTime(scheduleFlightobj.getArrivalTime()); }
-		 */
-		return null;
-	}
-
-	@Override
 	public void deleteScheduledFlight(int scheduleId) {
 		repo.deleteById(scheduleId);
 		
+	}
+
+	@Override
+	public ScheduledFlight modifyScheduledFlight(int scheduledFlightId, int availableSeats, long flightNumber,
+			Schedule schedule) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return null;
 	}
 
 }
