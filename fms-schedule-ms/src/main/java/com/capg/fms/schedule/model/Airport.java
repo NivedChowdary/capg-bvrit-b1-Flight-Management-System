@@ -8,7 +8,6 @@ public class Airport {
 
 	public Airport() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Airport(String airportName, String airportCode, String airportLocation) {

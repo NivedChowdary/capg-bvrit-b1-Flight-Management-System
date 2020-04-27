@@ -9,8 +9,6 @@ import javax.persistence.OneToOne;
 public class ScheduledFlight {
 	@Id
 	private int scheduleFlightId;// Not mentioned in DTO but, according to document methods, these are included
-									// in Frontend explanat
-//	private Flight flight;
 
 	private int availableSeats;
 	// private Schedule schedule;
@@ -125,7 +123,5 @@ public class ScheduledFlight {
 				+ destinationAirport + ", arrivalTime=" + arrivalTime + ", departureTime=" + departureTime
 				+ ", ticketcost=" + ticketcost + "]";
 	}
-
-
 
 }

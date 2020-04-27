@@ -8,8 +8,7 @@ public class Flight {
 	public int seatCapacity;
 
 	public Flight() {
-		super();
-		
+		super();		
 	}
 
 	public Flight(long flightNumber, String flightModel, String carrierName, int seatCapacity) {
