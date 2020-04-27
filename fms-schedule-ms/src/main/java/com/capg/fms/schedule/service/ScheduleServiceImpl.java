@@ -24,8 +24,21 @@ public class ScheduleServiceImpl implements IScheduleService {
 	
 	@Override
 	public ScheduledFlight addScheduleFlight(ScheduledFlight scheduledFlight) {
-		// TODO Auto-generated method stub
-		return repo.save(scheduledFlight);
+		  ScheduledFlight scheduledFlight1 = new ScheduledFlight();
+		  scheduledFlight1.setFlightNumber(scheduledFlight.getFlightNumber());
+		  Schedule schedule = new Schedule();
+		  schedule.setArrivalTime(schedule.getArrivalTime()); 
+		  Schedule schedule1= new Schedule();
+		  schedule1.setDepartureTime(schedule1.getDepartureTime());
+		  Schedule schedule2= new Schedule();
+		  schedule2.setSourceAirport(schedule.getSourceAirport());
+		  Schedule schedule3 = new Schedule();
+		  schedule3.setDestinationAirport(schedule.getDestinationAirport());
+		  scheduledFlight.setAvailableSeats(scheduledFlight.getAvailableSeats());
+		  scheduledFlight.setTicketcost(scheduledFlight.getTicketcost());
+		  scheduledFlight.setFlightNumber(scheduledFlight.getFlightNumber());
+		  ScheduledFlight scheduledFlight2 = new ScheduledFlight(scheduledFlight.getScheduleFlightId(),scheduledFlight.getAvailableSeats(),scheduledFlight.getFlightNumber(), schedule3, schedule1, schedule2,schedule,scheduledFlight.getTicketcost());
+		  return repo.save(scheduledFlight2);
 	}
 
 	@Override
@@ -43,11 +56,23 @@ public class ScheduleServiceImpl implements IScheduleService {
 	@Override
 	public ScheduledFlight modifyScheduledFlight(long flightNumber, Schedule schedule, int scheduleId) {
 		// TODO Auto-generated method stub
-		/*
-		 * ScheduledFlight scheduledFlight = repo.findById(scheduleId).get();
-		 * if(scheduledFlight != null) {
-		 * scheduleFlightobj.setArrivalTime(scheduleFlightobj.getArrivalTime()); }
-		 */
+		
+		  ScheduledFlight scheduledFlight = repo.findById(scheduleId).get();
+		  if(scheduledFlight != null) {
+		  schedule.setArrivalTime(schedule.getArrivalTime()); 
+		  Schedule schedule1= new Schedule();
+		  schedule1.setDepartureTime(schedule1.getDepartureTime());
+		  Schedule schedule2= new Schedule();
+		  schedule2.setSourceAirport(schedule.getSourceAirport());
+		  Schedule schedule3 = new Schedule();
+		  schedule3.setDestinationAirport(schedule.getDestinationAirport());
+		  scheduledFlight.setAvailableSeats(scheduledFlight.getAvailableSeats());
+		  scheduledFlight.setTicketcost(scheduledFlight.getTicketcost());
+		  scheduledFlight.setFlightNumber(scheduledFlight.getFlightNumber());
+		  ScheduledFlight scheduledFlight1 = new ScheduledFlight(scheduledFlight.getScheduleFlightId(),scheduledFlight.getAvailableSeats(),scheduledFlight.getFlightNumber(), schedule3, schedule1, schedule2,schedule,scheduledFlight.getTicketcost());
+		  return repo.save(scheduledFlight1);
+		  }
+		 
 		return null;
 	}
 
