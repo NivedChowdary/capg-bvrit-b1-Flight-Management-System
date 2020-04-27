@@ -50,9 +50,15 @@ public class ScheduleServiceImpl implements IScheduleService {
 			Schedule schedule) {
 		// TODO Auto-generated method stub
 		
+		//if (!repo.existsById(scheduleFlightobj.getScheduledFlightId())) 
+			ScheduledFlight scheduledFlight = repo.getOne(scheduledFlightId);
+			scheduledFlight.setAvailableSeats(availableSeats);
+			scheduledFlight.setFlightNumber(flightNumber);
+			scheduledFlight.setSchedule(schedule);
+			repo.save(scheduledFlight);
+			
 		
-		
-		return null;
+		return scheduledFlight;
 	}
 
 }
