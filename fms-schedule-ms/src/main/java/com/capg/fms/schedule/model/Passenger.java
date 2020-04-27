@@ -1,8 +1,10 @@
 package com.capg.fms.schedule.model;
 
+
+
 public class Passenger {
 
-	private long passengerNum;
+	private long pnrNumber;
 	private String passengerName;
 	private int passengerAge;
 	private long passengerUIN;
@@ -13,21 +15,22 @@ public class Passenger {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Passenger(long passengerNum, String passengerName, int passengerAge, long passengerUIN, double luggage) {
+	public Passenger(long pnrNumber, String passengerName, int passengerAge, long passengerUIN,
+			double luggage) {
 		super();
-		this.passengerNum = passengerNum;
+		this.pnrNumber = pnrNumber;
 		this.passengerName = passengerName;
 		this.passengerAge = passengerAge;
 		this.passengerUIN = passengerUIN;
 		this.luggage = luggage;
 	}
 
-	public long getPassengerNum() {
-		return passengerNum;
+	public long getPnrNumber() {
+		return pnrNumber;
 	}
 
-	public void setPassengerNum(long passengerNum) {
-		this.passengerNum = passengerNum;
+	public void setPnrNumber(long pnrNumber) {
+		this.pnrNumber = pnrNumber;
 	}
 
 	public String getPassengerName() {
@@ -64,8 +67,8 @@ public class Passenger {
 
 	@Override
 	public String toString() {
-		return "Passenger [passengerNum=" + passengerNum + ", passengerName=" + passengerName + ", passengerAge="
-				+ passengerAge + ", passengerUIN=" + passengerUIN + ", luggage=" + luggage + "]";
+		return "Passenger [pnrNumber=" + pnrNumber + ", passengerName=" + passengerName + ", passengerAge="
+				+ passengerAge + ", passengerUIN=" + passengerUIN + ", Luggage=" + luggage + "]";
 	}
 
 }

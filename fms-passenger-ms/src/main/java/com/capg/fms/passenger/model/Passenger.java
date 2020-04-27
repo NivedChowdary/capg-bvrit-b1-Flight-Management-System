@@ -1,12 +1,15 @@
 package com.capg.fms.passenger.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-
+@Entity
 public class Passenger {
-
+     
 	private long passengerNum;
 	private String passengerName;
 	private int passengerAge;
+	@Id
 	private long passengerUIN;
 	private double luggage;
 
