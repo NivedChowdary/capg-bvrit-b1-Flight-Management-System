@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.capg.fms.passenger.model.Passenger;
 import com.capg.fms.passenger.service.PassengerServiceImpl;
 
@@ -33,17 +32,18 @@ public class PassengerController {
 	   	return new ResponseEntity<Passenger>(passengerService.addPassenger(passenger),HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/delete/uin/{passengerUIN}")
-    public boolean deletePassenger(@PathVariable("passengerUIN") long passengerUIN)
+	@DeleteMapping("/delete/num/{passengerNum}")
+    public boolean deletePassenger(@PathVariable("passengerNum") long passengerNum)
     {
-		    return passengerService.deletePassenger(passengerUIN);
+		    return passengerService.deletePassenger(passengerNum);
     }
 	
-	@GetMapping("/uin/{passengerUIN}")
-	public ResponseEntity<Passenger> getPassenger(@PathVariable("passengerUIN") long passengerUIN)
+	
+	@GetMapping("/num/{passengerNum}")
+	public ResponseEntity<Passenger> getPassenger(@PathVariable("passengerNum") long passengerNum)
 	{
 		
-		return new ResponseEntity<Passenger>(passengerService.getPassenger(passengerUIN),HttpStatus.OK); 
+		return new ResponseEntity<Passenger>(passengerService.getPassenger(passengerNum),HttpStatus.OK); 
 			
     }
 
@@ -59,4 +59,5 @@ public ResponseEntity<List<Passenger>> getAllPassengers()
 		   return new ResponseEntity<Passenger>(passengerService.updatePassenger(passenger),HttpStatus.OK);
 	}
 
+	
 }

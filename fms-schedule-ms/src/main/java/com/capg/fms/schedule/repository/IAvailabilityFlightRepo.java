@@ -11,6 +11,6 @@ import com.capg.fms.schedule.model.ScheduledFlight;
 public interface IAvailabilityFlightRepo extends JpaRepository<Flight, Long> {
 	
 	@Query(value="from ScheduledFlight where flightNumber=:flightNumber")
-	List<Flight> findByFlightNumber(long flightNumber);
+	List<ScheduledFlight> findByFlightNumber(long flightNumber);
 
 }
