@@ -13,7 +13,9 @@ public interface IFlightService {
 	
 	public Flight modifyFlight(Flight flight);
 	
-	public Flight deleteFlight(long flightNumber);
+	public void deleteFlight(long flightNumber);
 		
+	public Flight getFlightById(long flightNumber);
+	
 	public List<Flight> getAll();
 }

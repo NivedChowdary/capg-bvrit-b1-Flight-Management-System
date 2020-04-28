@@ -6,9 +6,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.capg.fms.flight.exception.FlightNotFoundException;
 import com.capg.fms.flight.model.Flight;
 import com.capg.fms.flight.repo.IFlightRepo;
+
 
 
 
@@ -33,10 +34,14 @@ public class FlightServiceImpl implements IFlightService {
 
 	 @Override
 		@Transactional
-		public Flight deleteFlight(long flightNumber) {
-		 Flight deleteFlight=flightRepo.getOne(flightNumber);
+		public void deleteFlight(long flightNumber) {
+		 if(!flightRepo.existsById(flightNumber)) {
+			 throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");
+		 }
+//		 Flight deleteFlight=flightRepo.getOne(flightNumber);
+//		 flightRepo.deleteById(flightNumber);
+//			return deleteFlight;
 		 flightRepo.deleteById(flightNumber);
-			return deleteFlight;
 	 }
 	 
 	 
@@ -52,11 +57,34 @@ public class FlightServiceImpl implements IFlightService {
 	}
 
 	 @Override
+	
 		public List<Flight> getAll(){	
 			return flightRepo.findAll();
 		}
+	 @Transactional
+	 public Flight getFlightById(long flightNumber) {
+		 if(!flightRepo.existsById(flightNumber)) {
+			 throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");
+		 }
+		 return flightRepo.getOne(flightNumber);
+	 }
+
+//	 @Override
+//		public List<Flight> getFlightById(long flightNumber) {
+//			if(flightRepo.existsById(flightNumber)) {
+//				throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");	
+//			}
+//			return flightRepo.getFlightById(flightNumber);
+//		}
+//	@Override
+//	@Transactional
+//	public Flight getFlightId(long flightNumber) {
+//		 Flight getFlight=flightRepo.getOne(flightNumber);
+//		 flightRepo.getFlightById(flightNumber);
+//			return getFlight;
+	}
 		
 
 	
 	
-}
+
