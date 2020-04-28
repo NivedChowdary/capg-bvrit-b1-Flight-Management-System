@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.capg.fms.schedule.excepions.FlightNotFoundException;
 import com.capg.fms.schedule.excepions.InvalidInputException;
+import com.capg.fms.schedule.excepions.NotFound;
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.repository.IAvailabilityFlightRepo;
 
@@ -81,7 +82,7 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 			return true;
 		}
 		else {
-		    throw new InvalidInputException("Flight is unavailable");
+		    throw new NotFound("Flight is unavailable");
 		}
 	}	
 }

@@ -25,13 +25,3 @@ public class AvailabilityController {
 		return service.checkSeatAvailability(flightNumber, availableSeats);
 	}
 }
-
-//@GetMapping("/{flightNumber}")
-//public ResponseEntity<Flight> getFlightById(@PathVariable long flightNumber) {
-//	Flight flight=service.getFlightById(flightNumber);
-//	return new ResponseEntity<Flight>(flight,HttpStatus.FOUND);
-//}
-
-
-//Airport airport=new Airport("Rajiv Ganndhi", "354fgdf", "Shamshabad");
-//Flight flight=new Flight(4724489326L, "Air ways", "DLF", 100);
