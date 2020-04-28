@@ -5,19 +5,36 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="Flight")
 public class Flight {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
-	public long flightNumber;
-	public String flightModel;
-	public String carrierName;
-	public int seatCapacity;
-
+    private long flightNumber;
+    
+    @NotEmpty(message="FlightModel is Mandatory field, Please provide flighttModel")
+    @Size(min=4, message="Name should have atleast:4 characters")
+	private String flightModel;
+    
+    @NotEmpty(message="CarrierName is Mandatory field, Please provide carrierName")
+    @Size(min=4, message="Name should have atleast:4 characters")
+    private String carrierName;
+    
+    //@NotEmpty(message="FlightModel is Mandatory field, Please provide flighttModel")
+    @NotNull(message="SeatCapacity cannot be null")
+    @Min(value=1,message="SeatCapacity cannot be smaller than 1")
+    @Max(value=100,message="SeatCapacity cannot be greater than 100")
+    private int seatCapacity;
+    
 	public Flight() {
-		super();		
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Flight(long flightNumber, String flightModel, String carrierName, int seatCapacity) {
@@ -65,5 +82,11 @@ public class Flight {
 		return "Flight [flightNumber=" + flightNumber + ", flightModel=" + flightModel + ", carrierName=" + carrierName
 				+ ", seatCapacity=" + seatCapacity + "]";
 	}
+    
+	
+    
+    
+    
+    
 
 }

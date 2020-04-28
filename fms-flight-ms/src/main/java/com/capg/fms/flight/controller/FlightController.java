@@ -2,6 +2,8 @@ package com.capg.fms.flight.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,7 +38,7 @@ public class FlightController {
 	
      
 	@PostMapping("/add")
-	public ResponseEntity<Flight> addFlight(@RequestBody Flight flight){
+	public ResponseEntity<Flight> addFlight(@Valid @RequestBody Flight flight){
 		flightservice.addFlight(flight);
 		return new ResponseEntity<Flight>(flight,HttpStatus.CREATED);
 	}
@@ -55,7 +57,7 @@ public class FlightController {
 //	
 //	}
 	@DeleteMapping("/deleteById/{flightNumber}")
-	public ResponseEntity<Flight> deleteFlight(@PathVariable long flightNumber){
+	public ResponseEntity<Flight> deleteFlight(@Valid @PathVariable long flightNumber){
 		flightservice.deleteFlight(flightNumber);
 		return new ResponseEntity<Flight>(HttpStatus.OK);
 		
@@ -74,12 +76,12 @@ public class FlightController {
 	
 	
 	@PutMapping("/modify")
-	public ResponseEntity<Flight> modifyFlight(@RequestBody Flight flight){
+	public ResponseEntity<Flight> modifyFlight(@Valid @RequestBody Flight flight){
 		Flight newFlight=flightservice.modifyFlight(flight);
 		return new ResponseEntity<Flight>(flight,HttpStatus.OK);
 	}
 	@GetMapping("get/{flightNumber}")
-	public ResponseEntity<Flight> getFlightById(@PathVariable long flightNumber) {
+	public ResponseEntity<Flight> getFlightById(@Valid @PathVariable long flightNumber) {
 		Flight flight=flightservice.getFlightById(flightNumber);
 		return new ResponseEntity<Flight>(flight,HttpStatus.OK);
 	}
