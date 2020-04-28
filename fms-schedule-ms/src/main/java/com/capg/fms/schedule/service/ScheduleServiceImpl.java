@@ -8,6 +8,7 @@ import javax.print.attribute.standard.SheetCollate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.capg.fms.schedule.excepions.ScheduledFlightNotFound;
 import com.capg.fms.schedule.model.Schedule;
 import com.capg.fms.schedule.model.ScheduledFlight;
 import com.capg.fms.schedule.repository.IScheduleRepo;
@@ -30,6 +31,9 @@ public class ScheduleServiceImpl implements IScheduleService {
 	@Override
 	public ScheduledFlight viewScheduledFlight(int scheduleId) {
 		// TODO Auto-generated method stub
+		if (! repo.existsById(scheduleId)) {
+			throw new ScheduledFlightNotFound("Scheduled Flight not found");
+		}
 		return repo.findById(scheduleId).get();
 	}
 
@@ -41,6 +45,9 @@ public class ScheduleServiceImpl implements IScheduleService {
 
 	@Override
 	public void deleteScheduledFlight(int scheduleId) {
+		if (! repo.existsById(scheduleId)) {
+			throw new ScheduledFlightNotFound("Scheduled Flight not found");
+		}
 		repo.deleteById(scheduleId);
 		
 	}
@@ -51,6 +58,9 @@ public class ScheduleServiceImpl implements IScheduleService {
 		// TODO Auto-generated method stub
 		
 		//if (!repo.existsById(scheduleFlightobj.getScheduledFlightId())) 
+		if (! repo.existsById(scheduledFlightId)) {
+			throw new ScheduledFlightNotFound("Scheduled Flight not found");
+		}
 			ScheduledFlight scheduledFlight = repo.getOne(scheduledFlightId);
 			scheduledFlight.setAvailableSeats(availableSeats);
 			scheduledFlight.setFlightNumber(flightNumber);

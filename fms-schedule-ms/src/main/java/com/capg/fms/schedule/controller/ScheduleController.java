@@ -3,6 +3,8 @@ package com.capg.fms.schedule.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capg.fms.schedule.model.Schedule;
 import com.capg.fms.schedule.model.ScheduledFlight;
 import com.capg.fms.schedule.service.ScheduleServiceImpl;
 
@@ -22,34 +23,44 @@ public class ScheduleController {
 	ScheduleServiceImpl service;
 
 	@PostMapping("/add")
-	public ScheduledFlight addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
+	public ResponseEntity<ScheduledFlight> addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
 
-		return service.addScheduleFlight(scheduledFlight);
+		ScheduledFlight scheduledFlight1 = service.addScheduleFlight(scheduledFlight);
+
+		return new ResponseEntity<ScheduledFlight>(scheduledFlight1, HttpStatus.OK);
 
 	}
 
 	@GetMapping("/id/{scheduleId}")
-	public ScheduledFlight viewScheduledFlight(@PathVariable int scheduleId) {
+//	@ResponseStatus
+	public ResponseEntity<ScheduledFlight> viewScheduledFlight(@PathVariable int scheduleId) {
 
-		return service.viewScheduledFlight(scheduleId);
+		ScheduledFlight scheduledFlight = service.viewScheduledFlight(scheduleId);
+
+		return new ResponseEntity<ScheduledFlight>(scheduledFlight, HttpStatus.OK);
 	}
 
 	@GetMapping("/viewall")
-	public List<ScheduledFlight> viewScheduledFlight() {
+	public ResponseEntity<List<ScheduledFlight>> viewScheduledFlight() {
 
-		return service.viewScheduledFlight();
+		List<ScheduledFlight> scheduledFlight = service.viewScheduledFlight();
+
+		return new ResponseEntity<List<ScheduledFlight>>(scheduledFlight, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete/{scheduleId}")
-	public void deleteScheduledFlight(@PathVariable int scheduleId) {
+	public ResponseEntity<ScheduledFlight> deleteScheduledFlight(@PathVariable int scheduleId) {
 		service.deleteScheduledFlight(scheduleId);
+		return new ResponseEntity<ScheduledFlight>(HttpStatus.OK);
 	}
 
 	@PostMapping("/modify")
-	public ScheduledFlight modifyScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
+	public ResponseEntity<ScheduledFlight> modifyScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
 
-		return service.modifyScheduledFlight(scheduledFlight.getScheduledFlightId(),
+		ScheduledFlight scheduledFlight1 = service.modifyScheduledFlight(scheduledFlight.getScheduledFlightId(),
 				scheduledFlight.getAvailableSeats(), scheduledFlight.getFlightNumber(), scheduledFlight.getSchedule());
+
+		return new ResponseEntity<ScheduledFlight>(scheduledFlight1, HttpStatus.OK);
 	}
 
 }
