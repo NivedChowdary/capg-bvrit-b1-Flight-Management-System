@@ -10,15 +10,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class ScheduledFlight {
 	@Id
-<<<<<<< HEAD
-	private int scheduleFlightId;// Not mentioned in DTO but, according to document methods, these are included
-
-	private int availableSeats;
-	// private Schedule schedule;
-=======
 	@Column(name = "scheduledFlightId")
 	private int scheduledFlightId;
->>>>>>> branch 'master' of https://github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
 
 	@Column(name = "availableSeats")
 	private int availableSeats;

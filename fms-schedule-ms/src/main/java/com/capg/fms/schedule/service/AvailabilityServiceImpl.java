@@ -1,12 +1,10 @@
 package com.capg.fms.schedule.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.capg.fms.schedule.excepions.FlightNotFoundException;
 import com.capg.fms.schedule.excepions.InvalidInputException;
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
-import com.capg.fms.schedule.model.ScheduledFlight;
 import com.capg.fms.schedule.repository.IAvailabilityFlightRepo;
 
 @Service
@@ -16,21 +14,27 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	IAvailabilityFlightRepo flightRepository;
 
 	@Override
-	public List<ScheduledFlight> getFlightById(long flightNumber) {
-		if(flightRepository.existsById(flightNumber)) {
-			throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");	
-		}
-		return flightRepository.findByFlightNumber(flightNumber);
-	}
-	
-	@Override
-	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws SeatsAreNotAvailableException{
+	public boolean checkScheduledFlightById(long flightNumber) {
 
-		if(availableSeats<=0) {
-			throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
+		if(!flightRepository.existsByFlightNumber(flightNumber)) {
+			System.out.println(flightNumber);
+			throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");
 		}
 		return true;
 	}
+		
+	@Override
+	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws SeatsAreNotAvailableException{
+		if(!flightRepository.existsByFlightNumber(flightNumber)) {
+			if(flightRepository.checkAvailableSeats(availableSeats)) {
+				throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
+			}
+//			if(!flightRepository.checkAvailableSeats(availableSeats)) {
+//				throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
+//			}
+		}
+		return true;
+	}	
 
 	@Override
 	public boolean validateFlightId(long flightNumber) {
@@ -81,28 +85,3 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 		}
 	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-//if(!flightRepository.findAll().contains(flightRepository.findByFlightNumber(flightNumber))) {
-//System.out.println((flightNumber));
-//throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");
-//}
-
-
-
-//if(!flightRepository.findByFlightNumber(flightNumber).contains(availableSeats)) {
-//throw new SeatsAreNotAvailableException("Seats in "+flightNumber+" are NOT AVAILABLE");
-//}
-//return true;
-

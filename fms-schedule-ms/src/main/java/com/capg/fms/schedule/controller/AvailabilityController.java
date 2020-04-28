@@ -1,13 +1,11 @@
 package com.capg.fms.schedule.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
-import com.capg.fms.schedule.model.ScheduledFlight;
 import com.capg.fms.schedule.service.IAvailabilityService;
 
 @RestController
@@ -18,8 +16,8 @@ public class AvailabilityController {
 	IAvailabilityService service;
 
 	@GetMapping("/{flightNumber}")
-	public List<ScheduledFlight> getFlightById(@PathVariable long flightNumber) {
-		return service.getFlightById(flightNumber);
+	public boolean checkScheduledFlightById(@PathVariable long flightNumber) {
+		return service.checkScheduledFlightById(flightNumber);
 	}
 	
 	@GetMapping("/{flightNumber}/{availableSeats}")
