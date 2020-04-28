@@ -5,10 +5,10 @@ import com.capg.fms.login.model.User;
 public interface IUserAccountCreationService {
 	
 	public User addUser(User user);
-	public boolean validatePhoneNo(long phoneNo);
-	public boolean validateEmail(String email) ;
-	public boolean validateId(long id);
-	public boolean validatePassword(String password);
+	public boolean validateUserPhoneNo(long phoneNo);
+	public boolean validateUserEmail(String email) ;
+	public boolean validateUserId(long id);
+	public boolean validateUserPassword(String password);
 	public boolean validateUserType(String userType) ;
 	public boolean validateUserName(String userName);
 
