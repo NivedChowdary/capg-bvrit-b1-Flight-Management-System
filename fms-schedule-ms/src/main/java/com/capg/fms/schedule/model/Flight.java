@@ -1,28 +1,40 @@
-package com.capg.fms.addflights.model;
-
-import java.math.BigInteger;
+package com.capg.fms.schedule.model;
 
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name="Flight")
 public class Flight {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	public BigInteger flightNumber;
+    
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	public long flightNumber;
 	public String flightModel;
 	public String carrierName;
 	public int seatCapacity;
 
+	public Flight() {
+		super();		
+	}
 
-	public BigInteger getFlightNumber() {
+	public Flight(long flightNumber, String flightModel, String carrierName, int seatCapacity) {
+		super();
+		this.flightNumber = flightNumber;
+		this.flightModel = flightModel;
+		this.carrierName = carrierName;
+		this.seatCapacity = seatCapacity;
+	}
+
+	public long getFlightNumber() {
 		return flightNumber;
 	}
 
-	public void setFlightNumber(BigInteger flightNumber) {
+	public void setFlightNumber(long flightNumber) {
 		this.flightNumber = flightNumber;
 	}
 
