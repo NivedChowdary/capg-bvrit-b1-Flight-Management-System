@@ -24,4 +24,20 @@ public class AvailabilityController {
 	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) throws SeatsAreNotAvailableException {
 		return service.checkSeatAvailability(flightNumber, availableSeats);
 	}
+	
+	@GetMapping("/{flightNumber}/source/{sourceAirport}")
+	public boolean checkSource(@PathVariable long flightNumber,@PathVariable String sourceAirport) {
+		return service.checkSource(flightNumber, sourceAirport);
+	}
+	
+	@GetMapping("/{flightNumber}/destination/{destinationAirport}")
+	public boolean checkDestination(@PathVariable long flightNumber,@PathVariable String destinationAirport) {
+		return service.checkDestination(flightNumber, destinationAirport);
+	}
+	
+	@GetMapping("/{flightNumber}/source/{sourceAirport}/destination/{destinationAirport}")
+	public boolean checkSourceAndDestination(@PathVariable long flightNumber, @PathVariable String sourceAirport,
+			@PathVariable String destinationAirport) {
+		return service.checkSourceAndDestination(flightNumber, sourceAirport, destinationAirport);
+	}
 }
