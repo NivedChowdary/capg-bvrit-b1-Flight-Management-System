@@ -12,7 +12,7 @@ public class User {
 	@Id
 	private long userId;
 	private String userName;
-	private String userPassword; // use String instead of Password
+	private String userPassword; 
 	private long userPhone;
 	private String userEmail;
 

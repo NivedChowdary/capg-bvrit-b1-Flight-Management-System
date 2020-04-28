@@ -25,6 +25,16 @@ public class ScheduledFlight {
 
 	public ScheduledFlight() {
 		super();
+
+	}
+
+	public ScheduledFlight(int scheduleFlightId, int availableSeats, long flightNumber, Schedule schedule) {
+		super();
+		this.scheduledFlightId = scheduleFlightId;
+		this.availableSeats = availableSeats;
+		this.flightNumber = flightNumber;
+		this.schedule = schedule;
+
 	}
 
 	public int getScheduledFlightId() {
@@ -65,4 +75,5 @@ public class ScheduledFlight {
 				+  ", flightNumber=" + flightNumber + ", schedule=" + schedule
 				+ "]";
 	}
+
 }
