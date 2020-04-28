@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import com.capg.fms.passenger.exceptions.EmptyPassengerListException;
 import com.capg.fms.passenger.exceptions.PassengerAlreadyExistException;
 import com.capg.fms.passenger.exceptions.PassengerNotFoundException;
@@ -22,7 +23,7 @@ import com.capg.fms.passenger.repository.IPassengerRepo;
 		@Transactional
 		public Passenger addPassenger(Passenger passenger) {
 			if(passengerRepo.existsById(passenger.getPassengerNum()))
-				throw new PassengerAlreadyExistException("Passenger with Number: " +passenger.getPassengerNum()+" is Already Exist");
+				throw new PassengerAlreadyExistException("Passenger with Number: " +passenger.getPassengerNum()+" is already exist");
 			return passengerRepo.save(passenger);
 		}
 		
@@ -30,23 +31,23 @@ import com.capg.fms.passenger.repository.IPassengerRepo;
 
 		@Override
 		@Transactional
-		public boolean deletePassenger(long passengerUIN) {
-			if(!passengerRepo.existsById(passengerUIN)) 
+		public boolean deletePassenger(long passengerNum) {
+			if(!passengerRepo.existsById(passengerNum)) 
 			{	
-			   throw new PassengerNotFoundException("Passenger with UIN "+passengerUIN+" Not Found");
+			   throw new PassengerNotFoundException("Passenger with Number "+passengerNum+" Not Found");
 			}
-			passengerRepo.deleteById(passengerUIN);
-			return !passengerRepo.existsById(passengerUIN);
+			passengerRepo.deleteById(passengerNum);
+			return !passengerRepo.existsById(passengerNum);
 
 		}
 		@Override
 		@Transactional
-		public Passenger getPassenger(long passengerUIN) {
-			if(!passengerRepo.existsById(passengerUIN)) 
+		public Passenger getPassenger(long passengerNum) {
+			if(!passengerRepo.existsById(passengerNum)) 
 			{	
-			   throw new PassengerNotFoundException("Passenger with UIN "+passengerUIN+" Not Found");
+			   throw new PassengerNotFoundException("Passenger with Num "+passengerNum+" Not Found");
 			}
-		    return passengerRepo.getOne(passengerUIN);
+		    return passengerRepo.getOne(passengerNum);
 
 		}
 		
@@ -66,9 +67,10 @@ import com.capg.fms.passenger.repository.IPassengerRepo;
 		@Transactional
 		public Passenger updatePassenger(Passenger passenger) {
 			if(!passengerRepo.existsById(passenger.getPassengerNum()))
-				throw new PassengerNotFoundException("Passenger with Number : " +passenger.getPassengerNum()+" Not Found");
+				throw new PassengerNotFoundException("Passenger with Num : " +passenger.getPassengerNum()+" Not Found");
 		
 			Passenger newPassenger=passengerRepo.getOne(passenger.getPassengerNum());
+			
 			newPassenger.setPassengerName(passenger.getPassengerName());
 			newPassenger.setPassengerAge(passenger.getPassengerAge());
 			newPassenger.setPassengerUIN(passenger.getPassengerUIN());
@@ -77,7 +79,5 @@ import com.capg.fms.passenger.repository.IPassengerRepo;
 		passengerRepo.save(newPassenger);
 			return newPassenger;	
 		}
-
-
 
 }
