@@ -2,10 +2,8 @@ package com.capg.fms.booking.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="passenger_info")
 public class Passenger {
 
 	@Id
@@ -16,6 +14,7 @@ public class Passenger {
 	private double luggage;
 
 	public Passenger() {}
+		
 
 	public Passenger(long pnrNumber, String passengerName, int passengerAge, long passengerUIN,
 			double luggage) {
