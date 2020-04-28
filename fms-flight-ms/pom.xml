@@ -19,6 +19,18 @@
 	</properties>
 
 	<dependencies>
+	<dependency>
+	   <groupId>com.oracle</groupId>
+       <artifactId>ojdbc6</artifactId>
+       <version>11.2.0</version>
+       <scope>system</scope>
+       <systemPath>C:\Users\Banoth geetha\Downloads\ojdbc6.jar</systemPath>
+    </dependency>
+	   <dependency>
+	   <groupId>com.h2database</groupId>
+	   <artifactId>h2</artifactId>
+	   <scope>runtime</scope>
+	 </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
