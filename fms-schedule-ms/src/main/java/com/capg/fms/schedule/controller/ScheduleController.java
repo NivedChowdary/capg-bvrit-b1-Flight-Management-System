@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.capg.fms.schedule.model.Schedule;
 import com.capg.fms.schedule.model.ScheduledFlight;
 import com.capg.fms.schedule.service.ScheduleServiceImpl;
 
@@ -23,28 +21,33 @@ public class ScheduleController {
 
 	@PostMapping("/add")
 	public ScheduledFlight addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
-		
-	return service.addScheduleFlight(scheduledFlight);	
-		
+
+		return service.addScheduleFlight(scheduledFlight);
+
 	}
+
 	@GetMapping("/id/{scheduleId}")
 	public ScheduledFlight viewScheduledFlight(@PathVariable int scheduleId) {
-		
+
 		return service.viewScheduledFlight(scheduleId);
 	}
+
 	@GetMapping("/viewall")
 	public List<ScheduledFlight> viewScheduledFlight() {
-		
+
 		return service.viewScheduledFlight();
 	}
+
 	@DeleteMapping("/delete/{scheduleId}")
-	public void deleteScheduledFlight(int scheduleId) {
+	public void deleteScheduledFlight(@PathVariable int scheduleId) {
 		service.deleteScheduledFlight(scheduleId);
 	}
-	@PostMapping
-	public ScheduledFlight modifyScheduledFlight(int scheduledFlightId, int availableSeats, long flightNumber, Schedule schedule) {
-		
-		return service.modifyScheduledFlight(scheduledFlightId, availableSeats, flightNumber, schedule);
+
+	@PostMapping("/modify")
+	public ScheduledFlight modifyScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
+
+		return service.modifyScheduledFlight(scheduledFlight.getScheduledFlightId(),
+				scheduledFlight.getAvailableSeats(), scheduledFlight.getFlightNumber(), scheduledFlight.getSchedule());
 	}
-	
+
 }
