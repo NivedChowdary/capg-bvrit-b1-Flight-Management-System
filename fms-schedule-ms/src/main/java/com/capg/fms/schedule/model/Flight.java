@@ -1,12 +1,40 @@
 package com.capg.fms.schedule.model;
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
+import javax.persistence.Table;
+
+=======
+import javax.persistence.Table;
+
+import javax.persistence.Id;
+>>>>>>> branch 'master' of https://github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
+
+<<<<<<< HEAD
+@Entity
+=======
+//github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
+
 
 @Entity
+@Table(name="Flight")
+>>>>>>> branch 'master' of https://github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
 public class Flight {
-
+    
 	@Id
+<<<<<<< HEAD
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+=======
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+ //github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
+>>>>>>> branch 'master' of https://github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
 	public long flightNumber;
 	public String flightModel;
 	public String carrierName;

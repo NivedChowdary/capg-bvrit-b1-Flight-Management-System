@@ -23,28 +23,33 @@ public class ScheduleController {
 
 	@PostMapping("/add")
 	public ScheduledFlight addScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
-		
-	return service.addScheduleFlight(scheduledFlight);	
-		
+
+		return service.addScheduleFlight(scheduledFlight);
+
 	}
+
 	@GetMapping("/id/{scheduleId}")
 	public ScheduledFlight viewScheduledFlight(@PathVariable int scheduleId) {
-		
+
 		return service.viewScheduledFlight(scheduleId);
 	}
+
 	@GetMapping("/viewall")
 	public List<ScheduledFlight> viewScheduledFlight() {
-		
+
 		return service.viewScheduledFlight();
 	}
+
 	@DeleteMapping("/delete/{scheduleId}")
-	public void deleteScheduledFlight(int scheduleId) {
+	public void deleteScheduledFlight(@PathVariable int scheduleId) {
 		service.deleteScheduledFlight(scheduleId);
 	}
-	@PostMapping
-	public ScheduledFlight modifyScheduledFlight(int scheduledFlightId, int availableSeats, long flightNumber, Schedule schedule) {
-		
-		return service.modifyScheduledFlight(scheduledFlightId, availableSeats, flightNumber, schedule);
+
+	@PostMapping("/modify")
+	public ScheduledFlight modifyScheduledFlight(@RequestBody ScheduledFlight scheduledFlight) {
+
+		return service.modifyScheduledFlight(scheduledFlight.getScheduledFlightId(),
+				scheduledFlight.getAvailableSeats(), scheduledFlight.getFlightNumber(), scheduledFlight.getSchedule());
 	}
-	
+
 }
