@@ -1,3 +1,9 @@
+/*************************************************************************
+ -Author                : Karthikeswar Rao 
+ -Created/Modified Date : 28/04/2020
+ -Description           : Error Controller for checking the availability of flights
+***************************************************************************/
+
 package com.capg.fms.schedule.controller;
 
 import org.springframework.http.HttpStatus;

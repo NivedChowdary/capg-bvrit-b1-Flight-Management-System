@@ -1,3 +1,10 @@
+/*************************************************************************
+ -Author                : Karthikeswar Rao 
+ -Created/Modified Date : 28/04/2020
+ -Description           : AvailabilityServiceImpl implements services for IAvailabilityService
+ 						  for Schedule Management System
+***************************************************************************/
+
 package com.capg.fms.schedule.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +23,15 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	
 	@Autowired
 	IAvailabilityScheduleRepo scheduleRepo;
+	
+	/*************************************************************************
+	 -FunctionName          : checkScheduledFlightById
+	 -Input Parameters      : long flightNumber
+	 -Return Type           : String
+	 -Throws				: FlightNotFoundException
+	 -Author				: Karthikeswar Rao 
+	 -Creation Date			: 28/04/2020
+	***************************************************************************/
 
 	@Override
 	public String checkScheduledFlightById(long flightNumber) {
@@ -26,7 +42,16 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 		}
 		return "The flight is available";
 	}
-		
+	
+	/*************************************************************************
+	 -FunctionName          : checkSeatAvailability
+	 -Input Parameters      : long flightNumber, int availableSeats
+	 -Return Type           : boolean
+	 -Throws				: SeatsAreNotAvailableException
+	 -Author				: Karthikeswar Rao 
+	 -Creation Date			: 28/04/2020
+	***************************************************************************/
+	
 	@Override
 	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws SeatsAreNotAvailableException{
 		
@@ -38,6 +63,15 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 		return true;	
 	}
 
+	/*************************************************************************
+	 -FunctionName          : checkSource
+	 -Input Parameters      : long flightNumber,String sourceAirport
+	 -Return Type           : String
+	 -Throws				: InvalidInputException
+	 -Author				: Karthikeswar Rao 
+	 -Creation Date			: 28/04/2020
+	***************************************************************************/	
+	
 	@Override
 	public String checkSource(long flightNumber,String sourceAirport) {
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
@@ -45,8 +79,17 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 				throw new InvalidInputException("Source Airport is not valid");
 			}
 		}	
-		return "The source Airport is valid";
+		return "Source Airport is valid";
 	}
+	
+	/*************************************************************************
+	 -FunctionName          : checkDestination
+	 -Input Parameters      : long flightNumber, String destinationAirport
+	 -Return Type           : String
+	 -Throws				: InvalidInputException
+	 -Author				: Karthikeswar Rao 
+	 -Creation Date			: 28/04/2020
+	***************************************************************************/
 	
 	@Override
 	public String checkDestination(long flightNumber, String destinationAirport) {
@@ -55,21 +98,30 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 				throw new InvalidInputException("Destination Airport is not valid");
 			}
 		}	
-		return "The Destination Airport is valid";
+		return "Destination Airport is valid";
 	}
+	
+	/*************************************************************************
+	 -FunctionName          : checkSourceAndDestination
+	 -Input Parameters      : long flightNumber, String sourceAirport, String destinationAirport
+	 -Return Type           : String
+	 -Throws				: InvalidInputException
+	 -Author				: Karthikeswar Rao 
+	 -Creation Date			: 28/04/2020
+	***************************************************************************/
 
 	@Override
 	public String checkSourceAndDestination(long flightNumber, String sourceAirport, String destinationAirport) {
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
-			if(scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
-				if(flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
-					return "The flight is available";
-				}
+			if(!scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
+				throw new InvalidInputException("Flight is not available");
 			}
-		}		
-
-			return "The flight is not available";
-	}
+			else if(flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
+				throw new InvalidInputException("Flight is not available");
+			}
+		}
+		return "Flight is available";
+}
 	
 	@Override
 	public boolean validateFlightId(long flightNumber) {
