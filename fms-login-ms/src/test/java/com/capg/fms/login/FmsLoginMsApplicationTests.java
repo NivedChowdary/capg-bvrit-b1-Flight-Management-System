@@ -29,15 +29,6 @@ class FmsLoginMsApplicationTests {
 	
 	@Autowired
 	IUserJpaRepo repo;
-	
-	static User user;
-	
-	
-	
-	@BeforeAll
-	public static void addUsers() {
-		
-	}
 
 	@Test
 	public void testValidUserId() throws InvalidInputException{
