@@ -6,9 +6,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.capg.fms.flight.exception.FlightNotFoundException;
 import com.capg.fms.flight.model.Flight;
 import com.capg.fms.flight.repo.IFlightRepo;
+
 
 
 
@@ -33,10 +34,11 @@ public class FlightServiceImpl implements IFlightService {
 
 	 @Override
 		@Transactional
-		public Flight deleteFlight(long flightNumber) {
-		 Flight deleteFlight=flightRepo.getOne(flightNumber);
+		public void deleteFlight(long flightNumber) {
+		 if(!flightRepo.existsById(flightNumber)) {
+			 throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");
+		 }
 		 flightRepo.deleteById(flightNumber);
-			return deleteFlight;
 	 }
 	 
 	 
@@ -52,11 +54,16 @@ public class FlightServiceImpl implements IFlightService {
 	}
 
 	 @Override
+	
 		public List<Flight> getAll(){	
 			return flightRepo.findAll();
 		}
+	
+
+
+	}
 		
 
 	
 	
-}
+

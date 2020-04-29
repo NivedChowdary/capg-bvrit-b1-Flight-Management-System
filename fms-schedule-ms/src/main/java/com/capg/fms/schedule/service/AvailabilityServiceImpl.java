@@ -1,37 +1,76 @@
 package com.capg.fms.schedule.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.capg.fms.schedule.excepions.FlightNotFoundException;
 import com.capg.fms.schedule.excepions.InvalidInputException;
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
-import com.capg.fms.schedule.model.ScheduledFlight;
-import com.capg.fms.schedule.repository.IAvailabilityFlightRepo;
+import com.capg.fms.schedule.repository.IAvailabilityScheduledFlightRepo;
+import com.capg.fms.schedule.repository.IAvailabilityScheduleRepo;
 
 @Service
 public class AvailabilityServiceImpl implements IAvailabilityService {
 
 	@Autowired
-	IAvailabilityFlightRepo flightRepository;
+	IAvailabilityScheduledFlightRepo flightRepository;
+	
+	@Autowired
+	IAvailabilityScheduleRepo scheduleRepo;
 
 	@Override
-	public List<ScheduledFlight> getFlightById(long flightNumber) {
-		if(flightRepository.existsById(flightNumber)) {
-			throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");	
+	public String checkScheduledFlightById(long flightNumber) {
+
+		if(!flightRepository.existsByFlightNumber(flightNumber)) {
+			System.out.println(flightNumber);
+			throw new FlightNotFoundException("FlightNumber with "+flightNumber+" is NOT FOUND");
 		}
-		return flightRepository.findByFlightNumber(flightNumber);
+		return "The flight is available";
+	}
+		
+	@Override
+	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws SeatsAreNotAvailableException{
+		
+		if(flightRepository.existsByFlightNumber(flightNumber)) {
+			if(flightRepository.existsAvailableSeats(0)) {
+				throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
+			}
+		}
+		return true;	
+	}
+
+	@Override
+	public String checkSource(long flightNumber,String sourceAirport) {
+		if(flightRepository.existsByFlightNumber(flightNumber)) {
+			if(!scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
+				throw new InvalidInputException("Source Airport is not valid");
+			}
+		}	
+		return "The source Airport is valid";
 	}
 	
 	@Override
-	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws SeatsAreNotAvailableException{
-
-		if(availableSeats<=0) {
-			throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
-		}
-		return true;
+	public String checkDestination(long flightNumber, String destinationAirport) {
+		if(flightRepository.existsByFlightNumber(flightNumber)) {
+			if(!scheduleRepo.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
+				throw new InvalidInputException("Destination Airport is not valid");
+			}
+		}	
+		return "The Destination Airport is valid";
 	}
 
+	@Override
+	public String checkSourceAndDestination(long flightNumber, String sourceAirport, String destinationAirport) {
+		if(flightRepository.existsByFlightNumber(flightNumber)) {
+			if(scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
+				if(flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
+					return "The flight is available";
+				}
+			}
+		}		
+
+			return "The flight is not available";
+	}
+	
 	@Override
 	public boolean validateFlightId(long flightNumber) {
 
@@ -46,63 +85,4 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 		}
 		return true;
 	}
-
-	@Override
-	public boolean validateSource(String sourceAirport) {
-		
-		if((sourceAirport.equalsIgnoreCase(sourceAirport)) || sourceAirport.matches(sourceAirport)) {
-			return true;
-		}
-		else {
-		    throw new InvalidInputException("Source Airport is not valid");
-		}		
-	}
-
-	@Override
-	public boolean validateDestination(String destinationAirport) {
-		
-		if((destinationAirport.equalsIgnoreCase(destinationAirport)) || destinationAirport.matches(destinationAirport)) {
-			return true;
-		}
-		else {
-		    throw new InvalidInputException("Destination Airport is not valid");
-		}		
-	}
-
-	@Override
-	public boolean validateSourceAndDestination(String sourceAirport, String destinationAirport) {
-
-		if((sourceAirport.matches(sourceAirport)) && (destinationAirport.matches(destinationAirport)) ||
-				(sourceAirport.equalsIgnoreCase(sourceAirport) && destinationAirport.equalsIgnoreCase(destinationAirport))) {
-			return true;
-		}
-		else {
-		    throw new InvalidInputException("Flight is unavailable");
-		}
-	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-//if(!flightRepository.findAll().contains(flightRepository.findByFlightNumber(flightNumber))) {
-//System.out.println((flightNumber));
-//throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");
-//}
-
-
-
-//if(!flightRepository.findByFlightNumber(flightNumber).contains(availableSeats)) {
-//throw new SeatsAreNotAvailableException("Seats in "+flightNumber+" are NOT AVAILABLE");
-//}
-//return true;
-

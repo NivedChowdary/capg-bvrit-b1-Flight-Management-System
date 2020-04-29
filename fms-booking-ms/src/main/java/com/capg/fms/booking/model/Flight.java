@@ -1,11 +1,13 @@
 package com.capg.fms.booking.model;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.OneToOne;
+
 
 @Entity
-@Table(name="flight_info")
 public class Flight {
 
 	@Id
@@ -14,7 +16,7 @@ public class Flight {
 	public String carrierName;
 	public int seatCapacity;
 
-	public Flight() {	}
+	public Flight() {}
 
 	public Flight(long flightNumber, String flightModel, String carrierName, int seatCapacity) {
 		super();
@@ -62,5 +64,4 @@ public class Flight {
 				+ ", seatCapacity=" + seatCapacity + "]";
 	}
 
-	
 }

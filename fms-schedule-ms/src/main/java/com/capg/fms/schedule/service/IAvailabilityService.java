@@ -1,17 +1,13 @@
 package com.capg.fms.schedule.service;
 
-import java.util.List;
-
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
-import com.capg.fms.schedule.model.Flight;
-import com.capg.fms.schedule.model.ScheduledFlight;
 
 public interface IAvailabilityService {
 
-	List<ScheduledFlight> getFlightById(long flightNumber);
+	String checkScheduledFlightById(long flightNumber);
 	boolean checkSeatAvailability(long flightNumber,int availableSeats) throws SeatsAreNotAvailableException;
+	String checkSource(long flightNumber, String sourceAirport);
+	String checkDestination(long flightNumber, String destinationAirport);
+	String checkSourceAndDestination(long flightNumber,String sourceAirport, String destinationAirport);
 	boolean validateFlightId(long flightNumber);
-	boolean validateSource(String sourceAirport);
-	boolean validateDestination(String destinationAirport);
-	boolean validateSourceAndDestination(String sourceAirport, String destinationAirport);
 }
