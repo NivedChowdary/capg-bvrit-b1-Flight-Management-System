@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capg.fms.schedule.excepions.ScheduleAlreadyExistException;
 import com.capg.fms.schedule.excepions.ScheduledFlightNotFound;
 
 @ControllerAdvice
@@ -24,4 +25,10 @@ public class ScheduledErrorController {
 
 	}
 
+	@ExceptionHandler(ScheduleAlreadyExistException.class)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "Scheduled Flight Already Exists")
+	public void scheduleAlreadyExistsException() {
+		
+	}
+	
 }
