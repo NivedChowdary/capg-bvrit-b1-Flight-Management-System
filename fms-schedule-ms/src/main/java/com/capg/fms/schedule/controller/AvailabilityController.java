@@ -16,7 +16,7 @@ public class AvailabilityController {
 	IAvailabilityService service;
 
 	@GetMapping("/{flightNumber}")
-	public boolean checkScheduledFlightById(@PathVariable long flightNumber) {
+	public String checkScheduledFlightById(@PathVariable long flightNumber) {
 		return service.checkScheduledFlightById(flightNumber);
 	}
 	
@@ -26,17 +26,17 @@ public class AvailabilityController {
 	}
 	
 	@GetMapping("/{flightNumber}/source/{sourceAirport}")
-	public boolean checkSource(@PathVariable long flightNumber,@PathVariable String sourceAirport) {
+	public String checkSource(@PathVariable long flightNumber,@PathVariable String sourceAirport) {
 		return service.checkSource(flightNumber, sourceAirport);
 	}
 	
 	@GetMapping("/{flightNumber}/destination/{destinationAirport}")
-	public boolean checkDestination(@PathVariable long flightNumber,@PathVariable String destinationAirport) {
+	public String checkDestination(@PathVariable long flightNumber,@PathVariable String destinationAirport) {
 		return service.checkDestination(flightNumber, destinationAirport);
 	}
 	
 	@GetMapping("/{flightNumber}/source/{sourceAirport}/destination/{destinationAirport}")
-	public boolean checkSourceAndDestination(@PathVariable long flightNumber, @PathVariable String sourceAirport,
+	public String checkSourceAndDestination(@PathVariable long flightNumber, @PathVariable String sourceAirport,
 			@PathVariable String destinationAirport) {
 		return service.checkSourceAndDestination(flightNumber, sourceAirport, destinationAirport);
 	}

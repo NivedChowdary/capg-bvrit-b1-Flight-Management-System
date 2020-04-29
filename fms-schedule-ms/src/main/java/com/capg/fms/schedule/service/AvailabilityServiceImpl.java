@@ -18,13 +18,13 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	IAvailabilityScheduleRepo scheduleRepo;
 
 	@Override
-	public boolean checkScheduledFlightById(long flightNumber) {
+	public String checkScheduledFlightById(long flightNumber) {
 
 		if(!flightRepository.existsByFlightNumber(flightNumber)) {
 			System.out.println(flightNumber);
 			throw new FlightNotFoundException("FlightNumber with "+flightNumber+" is NOT FOUND");
 		}
-		return true;
+		return "The flight is available";
 	}
 		
 	@Override
@@ -35,39 +35,40 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 				throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
 			}
 		}
-		return true;
+		return true;	
 	}
 
 	@Override
-	public boolean checkSource(long flightNumber,String sourceAirport) {
+	public String checkSource(long flightNumber,String sourceAirport) {
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
 			if(!scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
 				throw new InvalidInputException("Source Airport is not valid");
 			}
 		}	
-		return true;
+		return "The source Airport is valid";
 	}
 	
 	@Override
-	public boolean checkDestination(long flightNumber, String destinationAirport) {
+	public String checkDestination(long flightNumber, String destinationAirport) {
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
 			if(!scheduleRepo.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
 				throw new InvalidInputException("Destination Airport is not valid");
 			}
 		}	
-		return true;
+		return "The Destination Airport is valid";
 	}
 
 	@Override
-	public boolean checkSourceAndDestination(long flightNumber, String sourceAirport, String destinationAirport) {
+	public String checkSourceAndDestination(long flightNumber, String sourceAirport, String destinationAirport) {
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
 			if(scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
 				if(flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
-					return true;
+					return "The flight is available";
 				}
 			}
 		}		
-		return false;
+
+			return "The flight is not available";
 	}
 	
 	@Override
