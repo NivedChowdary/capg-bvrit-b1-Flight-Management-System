@@ -1,3 +1,11 @@
+/***************************************************************
+ -Author                : Geetha and Meghana
+ -Created/Modified Date : 28/04/2020
+ -Description           : BeanClass Flight for 
+ 						  FLight Management System
+*******************************************************************/
+
+
 package com.capg.fms.flight.model;
 
 import javax.persistence.Entity;
@@ -12,20 +20,25 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name="Flight")
+@Table(name="Flight_Info")
 public class Flight {
     @Id
+    
+   
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private long flightNumber;
     
+  
     @NotEmpty(message="FlightModel is Mandatory field, Please provide flighttModel")
     @Size(min=4, message="Name should have atleast:4 characters")
 	private String flightModel;
     
+
     @NotEmpty(message="CarrierName is Mandatory field, Please provide carrierName")
     @Size(min=4, message="Name should have atleast:4 characters")
     private String carrierName;
     
+  
     //@NotEmpty(message="FlightModel is Mandatory field, Please provide flighttModel")
     @NotNull(message="SeatCapacity cannot be null")
     @Min(value=1,message="SeatCapacity cannot be smaller than 1")
