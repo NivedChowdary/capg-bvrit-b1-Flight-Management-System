@@ -1,10 +1,3 @@
-/***************************************************************
- -Author                : Karthikeswar Rao
- -Created/Modified Date : 28/04/2020
- -Description           : IAvailabilityService interface for 
- 						  Schedule Management system
-*******************************************************************/
-
 package com.capg.fms.schedule.service;
 
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;

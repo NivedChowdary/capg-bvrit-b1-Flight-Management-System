@@ -1,8 +1,3 @@
-/*************************************************************************
- -Author                : Karthikeswar Rao 
- -Created/Modified Date : 28/04/2020
- -Description           : Error Controller for checking the availability of flights
-***************************************************************************/
 
 package com.capg.fms.schedule.controller;
 
@@ -19,7 +14,7 @@ import com.capg.fms.schedule.excepions.NotFound;
 public class AvailabilityErrorController {
 	
 	@ExceptionHandler(NotFound.class)
-	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No availability", code = HttpStatus.NOT_FOUND)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No availability")
 	public void AvailabilityNotFoundException() {
 		
 	}
