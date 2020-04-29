@@ -10,5 +10,4 @@ public interface IAvailabilityService {
 	String checkDestination(long flightNumber, String destinationAirport);
 	String checkSourceAndDestination(long flightNumber,String sourceAirport, String destinationAirport);
 	boolean validateFlightId(long flightNumber);
-//	This is a ygbybuji,kj 
 }
