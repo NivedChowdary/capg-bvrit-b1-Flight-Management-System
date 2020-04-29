@@ -15,7 +15,6 @@ public interface IFlightService {
 	
 	public void deleteFlight(long flightNumber);
 		
-	public Flight getFlightById(long flightNumber);
 	
 	public List<Flight> getAll();
 }

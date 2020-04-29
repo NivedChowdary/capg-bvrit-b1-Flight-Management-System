@@ -38,9 +38,6 @@ public class FlightServiceImpl implements IFlightService {
 		 if(!flightRepo.existsById(flightNumber)) {
 			 throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");
 		 }
-//		 Flight deleteFlight=flightRepo.getOne(flightNumber);
-//		 flightRepo.deleteById(flightNumber);
-//			return deleteFlight;
 		 flightRepo.deleteById(flightNumber);
 	 }
 	 
@@ -61,27 +58,9 @@ public class FlightServiceImpl implements IFlightService {
 		public List<Flight> getAll(){	
 			return flightRepo.findAll();
 		}
-	 @Transactional
-	 public Flight getFlightById(long flightNumber) {
-		 if(!flightRepo.existsById(flightNumber)) {
-			 throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");
-		 }
-		 return flightRepo.getOne(flightNumber);
-	 }
+	
 
-//	 @Override
-//		public List<Flight> getFlightById(long flightNumber) {
-//			if(flightRepo.existsById(flightNumber)) {
-//				throw new FlightNotFoundException("flightNumber with "+flightNumber+" is NOT FOUND");	
-//			}
-//			return flightRepo.getFlightById(flightNumber);
-//		}
-//	@Override
-//	@Transactional
-//	public Flight getFlightId(long flightNumber) {
-//		 Flight getFlight=flightRepo.getOne(flightNumber);
-//		 flightRepo.getFlightById(flightNumber);
-//			return getFlight;
+
 	}
 		
 
