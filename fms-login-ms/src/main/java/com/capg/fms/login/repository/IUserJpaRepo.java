@@ -18,5 +18,4 @@ public interface IUserJpaRepo extends JpaRepository<User, Integer>{
 	@Query(value = "SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END FROM User c WHERE c.userName = :userName")
 	public boolean existsByUserName(String userName);
 	
-
 }

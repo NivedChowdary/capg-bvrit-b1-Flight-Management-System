@@ -16,10 +16,10 @@ public class LoginServiceImpl implements ILoginService {
 	@Override
 	public boolean checkUserCredentials(String userName,String userPassword) {
 		
-		if(!repo.findAll().contains(repo.getUserByUserName(userName)))  {
+		if(!repo.existsByUserName(userName))  {
 			throw new InvalidUserNameAndPasswordException("user with userName ["+userName+"] NOT Found");
 		}
-		else if(repo.findAll().contains(repo.getUserByUserName(userName))) {
+		if(repo.existsByUserName(userName)) {
 			if(!userPassword.equals(repo.getUserByUserName(userName).getUserPassword())) {
 				throw new InvalidUserNameAndPasswordException("Password mismatch");
 			}
