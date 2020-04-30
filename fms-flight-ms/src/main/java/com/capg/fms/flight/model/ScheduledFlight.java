@@ -5,31 +5,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-@Entity
+
 public class ScheduledFlight {
-	@Id
-	private int scheduleFlightId;// Not mentioned in DTO but, according to document methods, these are included
+	
+	private int scheduleFlightId;
 
 	private int availableSeats;
-	// private Schedule schedule;
+	
 
 	private long flightNumber;
 
-	@OneToOne
-	@JoinColumn(name = "sourceAirport", referencedColumnName = "sourceAirport")
-	private Schedule sourceAirport;// calling variable from Schedule class And using Mapping and joinTable using
-									// because both are from same module
+	private Schedule sourceAirport;
 
-	@OneToOne
-	@JoinColumn(name = "destinationAirport", referencedColumnName = "destinationAirport")
 	private Schedule destinationAirport;
 
-	@OneToOne
-	@JoinColumn(name = "arrivalTime", referencedColumnName = "arrivalTime")
 	private Schedule arrivalTime;
 
-	@OneToOne
-	@JoinColumn(name = "departureTime", referencedColumnName = "departureTime")
 	private Schedule departureTime;
 
 	private long ticketcost;

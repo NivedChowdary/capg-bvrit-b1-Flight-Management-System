@@ -4,22 +4,17 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-@Entity
+
+
 public class Schedule {
 
-	@Id
-	private int scheduleId;// not mentioned in case study .......
 	
-	//private Airport sourceAirport;
+	private int scheduleId;
+	
 
-	
 	private String sourceAirport;
-	
-	
-	//private Airport destinationAirport;
-	
+
 	private String destinationAirport;
-	
 
 	private LocalDateTime arrivalTime;
 

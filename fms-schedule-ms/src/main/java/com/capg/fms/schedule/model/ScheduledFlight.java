@@ -1,9 +1,3 @@
-/***************************************************************
- -Author                : Nived Chowdary
- -Created/Modified Date : 28/04/2020
- -Description           : BeanClass ScheduledFlight for 
- 						  Schedule Management System
-*******************************************************************/
 package com.capg.fms.schedule.model;
 
 import javax.persistence.CascadeType;
@@ -78,7 +72,8 @@ public class ScheduledFlight {
 	@Override
 	public String toString() {
 		return "ScheduledFlight [scheduledFlightId=" + scheduledFlightId + ", availableSeats=" + availableSeats
-				+ ", flightNumber=" + flightNumber + ", schedule=" + schedule + "]";
+				+  ", flightNumber=" + flightNumber + ", schedule=" + schedule
+				+ "]";
 	}
 
 }
