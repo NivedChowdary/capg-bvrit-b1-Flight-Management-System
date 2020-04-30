@@ -28,4 +28,7 @@ public interface IFlightService {
 	 public Flight getFlightById(long flightNumber);
 	 
 	public List<Flight> getAll();
+	
+	
+
 }

@@ -29,8 +29,8 @@ public class Flight {
     private long flightNumber;
     
   
-    @NotEmpty(message="FlightModel is Mandatory field, Please provide flighttModel")
-    @Size(min=4, message="Name should have atleast:4 characters")
+//    @NotEmpty(message="FlightModel is Mandatory field, Please provide flighttModel")
+//    @Size(min=4, message="Name should have atleast:4 characters")
 	private String flightModel;
     
 

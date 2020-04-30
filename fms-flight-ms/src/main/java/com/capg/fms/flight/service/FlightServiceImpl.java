@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.capg.fms.flight.exception.FlightAlreadyExistException;
 import com.capg.fms.flight.exception.FlightNotFoundException;
+import com.capg.fms.flight.exception.InvalidInputException;
 import com.capg.fms.flight.model.Flight;
 import com.capg.fms.flight.repo.IFlightRepo;
 
@@ -133,7 +134,8 @@ public class FlightServiceImpl implements IFlightService {
 		public List<Flight> getAll(){	
 			return flightRepo.findAll();
 		}
-	
+	 
+
 
 
 	}
