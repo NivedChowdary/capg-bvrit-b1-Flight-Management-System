@@ -11,7 +11,7 @@ import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.service.IAvailabilityService;
 
 @SpringBootTest
-class FmsScheduleMsAvailabilityTest {
+class FmsScheduleMsAvailabilityTests {
 	
 	@Autowired
 	IAvailabilityService availabilityService;

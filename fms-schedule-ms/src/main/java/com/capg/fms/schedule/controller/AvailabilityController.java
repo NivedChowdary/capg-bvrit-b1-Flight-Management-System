@@ -23,13 +23,18 @@ public class AvailabilityController {
 	@Autowired
 	IAvailabilityService service;
 
+
+	///@GetMapping("/{flightNumber}")
+
 	@GetMapping("/{flightNumber}")
+
 	public String checkScheduledFlightById(@PathVariable long flightNumber) {
 		if(service.validateFlightId(flightNumber)) {
 			return service.checkScheduledFlightById(flightNumber);
 		}
 		return "The FlightNumber should have 12 digits";
 	}
+	
 	
 	@GetMapping("/{flightNumber}/{availableSeats}")
 	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) throws SeatsAreNotAvailableException {

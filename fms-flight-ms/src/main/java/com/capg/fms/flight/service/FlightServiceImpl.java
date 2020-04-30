@@ -1,9 +1,9 @@
 
 /*************************************************************************
- -Author                : Geetha and Meghana
- -Created/Modified Date : 28/04/2020
- -Description           : FlightServiceImpl implements IFlightService
- 						  for Schedule Management System
+ -Author                            : Geetha and Meghana
+ -Created/Modified Date             : 28/04/2020
+ -Description                       : FlightServiceImpl implements IFlightService
+ 						               for Flight Management System
 ***************************************************************************/
 
 
@@ -30,13 +30,13 @@ public class FlightServiceImpl implements IFlightService {
 	
 
 	/*************************************************************************
-	 -FunctionName          : addFlight
-	 -Input Parameters      : Flight Object
-	 -Return Type           : flight
-	 -Throws				: FlightAlreadyExistException
-	 -Author				: Geetha
-	 -Creation Date			: 28/04/2020
-	 -Description			: Adding Flight to database
+	 -FunctionName                     : addFlight
+	 -Input Parameters                 : Flight Object
+	 -Return Type                      : flight
+	 -Throws				           : FlightAlreadyExistException
+	 -Author				           : Geetha
+	 -Creation Date			           : 28/04/2020
+	 -Description			           : Adding Flight to database
 	***************************************************************************/
 	
 	 @Override
@@ -50,13 +50,13 @@ public class FlightServiceImpl implements IFlightService {
 	  }	
 	  
 	 /*************************************************************************
-	 -FunctionName          : deleteScheduleFlight
-	 -Input Parameters      : flightNumber
-	 -Return Type           : Void
-	 -Throws				: FlightNotFoundException
-	 -Author				: Geetha
-	 -Creation Date			: 28/04/2020
-	 -Description			: delete Flight based on Id
+	 -FunctionName                      : deleteScheduleFlight
+	 -Input Parameters                  : flightNumber
+	 -Return Type                       : Void
+	 -Throws				            : FlightNotFoundException
+	 -Author				            : Geetha
+	 -Creation Date			            : 28/04/2020
+	 -Description			            : delete Flight based on Id
 	***************************************************************************/
 
 	 @Override
@@ -70,13 +70,13 @@ public class FlightServiceImpl implements IFlightService {
 	 
 	 
 	 /*************************************************************************
-	 -FunctionName          : modifyScheduleFlight
-	 -Input Parameters      : flightNumber, filghtModel, carrierName, seatCapacity
-	 -Return Type           : newFlight
-	 -Throws				: FlightNotFoundException
-	 -Author				: Meghana 
-	 -Creation Date			: 28/04/2020
-	 -Description			: Modify Flight 
+	 -FunctionName                       : modifyScheduleFlight
+	 -Input Parameters                   : flightNumber, filghtModel, carrierName, seatCapacity
+	 -Return Type                        : newFlight
+	 -Throws				             : FlightNotFoundException
+	 -Author				             : Meghana 
+	 -Creation Date			             : 28/04/2020
+	 -Description			             : Modify Flight 
 	***************************************************************************/
 	 
 	 @Override
@@ -99,13 +99,13 @@ public class FlightServiceImpl implements IFlightService {
 	 
 	 
 	 /*************************************************************************
-	 -FunctionName          : viewScheduleFlight
-	 -Input Parameters      : flightNumber
-	 -Return Type           : flightNumber
-	 -Throws				: FlightNotFoundException
-	 -Author				: Meghana 
-	 -Creation Date			: 28/04/2020
-	 -Description			: Viewing Flight based on Number
+	 -FunctionName                       : viewScheduleFlight
+	 -Input Parameters                   : flightNumber
+	 -Return Type                        : flightNumber
+	 -Throws			               	 : FlightNotFoundException
+	 -Author				             : Meghana 
+	 -Creation Date			             : 28/04/2020
+	 -Description			             : Viewing Flight based on Number
 	***************************************************************************/
 	 
 	 
@@ -120,13 +120,13 @@ public class FlightServiceImpl implements IFlightService {
 
 	
 	  /*************************************************************************
-		 -FunctionName          : getAll
-		 -Input Parameters      : None
-		 -Return Type           : flight
-		 -Throws				: None
-		 -Author				: Geetha 
-		 -Creation Date			: 28/04/2020
-		 -Description			: Viewing Flight List
+		 -FunctionName                    : getAll
+		 -Input Parameters                : None
+		 -Return Type                     : flight
+		 -Throws				          : None
+		 -Author				          : Geetha 
+		 -Creation Date			          : 28/04/2020
+		 -Description			          : Viewing Flight List
 		***************************************************************************/
 
 	 @Override

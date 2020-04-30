@@ -1,18 +1,27 @@
+/***************************************************************
+ -Author                : Karthikeswar Rao
+ -Created/Modified Date : 28/04/2020
+ -Description           : IAvailabilityService interface for 
+ 						  Schedule Management system
+*******************************************************************/
+
 package com.capg.fms.schedule.service;
 
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 
 public interface IAvailabilityService {
-<<<<<<< HEAD
+
 	
 	String checkScheduledFlightById(long flightNumber);
-=======
 
-	boolean checkScheduledFlightById(long flightNumber);
->>>>>>> branch 'master' of https://github.com/NivedChowdary/capg-bvrit-b1-flight-management-system.git
+
+
+	//boolean checkScheduledFlightById(long flightNumber);
+
 	boolean checkSeatAvailability(long flightNumber,int availableSeats) throws SeatsAreNotAvailableException;
-	boolean checkSource(long flightNumber, String sourceAirport);
-	boolean checkDestination(long flightNumber, String destinationAirport);
-	boolean checkSourceAndDestination(long flightNumber,String sourceAirport, String destinationAirport);
+	String checkSource(long flightNumber, String sourceAirport);
+	String checkDestination(long flightNumber, String destinationAirport);
+	String checkSourceAndDestination(long flightNumber,String sourceAirport, String destinationAirport);
 	boolean validateFlightId(long flightNumber);
+
 }
