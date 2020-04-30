@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.capg.fms.schedule.excepions.InvalidInputException;
-import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.service.IAvailabilityService;
 
 @RestController
@@ -22,9 +20,6 @@ public class AvailabilityController {
 
 	@Autowired
 	IAvailabilityService service;
-
-
-	///@GetMapping("/{flightNumber}")
 
 	@GetMapping("/{flightNumber}")
 
@@ -37,7 +32,7 @@ public class AvailabilityController {
 	
 	
 	@GetMapping("/{flightNumber}/{availableSeats}")
-	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) throws SeatsAreNotAvailableException {
+	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) throws InvalidInputException {
 		return service.checkSeatAvailability(flightNumber, availableSeats);
 	}
 	
@@ -51,9 +46,9 @@ public class AvailabilityController {
 		return service.checkDestination(flightNumber, destinationAirport);
 	}
 	
-	@GetMapping("/{flightNumber}/source/{sourceAirport}/destination/{destinationAirport}")
-	public String checkSourceAndDestination(@PathVariable long flightNumber, @PathVariable String sourceAirport,
+	@GetMapping("/source/{sourceAirport}/destination/{destinationAirport}")
+	public String checkSourceAndDestination( @PathVariable String sourceAirport,
 			@PathVariable String destinationAirport) {
-		return service.checkSourceAndDestination(flightNumber, sourceAirport, destinationAirport);
+		return service.checkSourceAndDestination(sourceAirport, destinationAirport);
 	}
 }

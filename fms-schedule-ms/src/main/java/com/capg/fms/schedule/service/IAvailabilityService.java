@@ -7,21 +7,14 @@
 
 package com.capg.fms.schedule.service;
 
-import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
+import com.capg.fms.schedule.excepions.InvalidInputException;
 
 public interface IAvailabilityService {
 
-	
 	String checkScheduledFlightById(long flightNumber);
-
-
-
-	//boolean checkScheduledFlightById(long flightNumber);
-
-	boolean checkSeatAvailability(long flightNumber,int availableSeats) throws SeatsAreNotAvailableException;
+	boolean checkSeatAvailability(long flightNumber,int availableSeats) throws InvalidInputException;
 	String checkSource(long flightNumber, String sourceAirport);
 	String checkDestination(long flightNumber, String destinationAirport);
-	String checkSourceAndDestination(long flightNumber,String sourceAirport, String destinationAirport);
+	String checkSourceAndDestination(String sourceAirport, String destinationAirport);
 	boolean validateFlightId(long flightNumber);
-
 }

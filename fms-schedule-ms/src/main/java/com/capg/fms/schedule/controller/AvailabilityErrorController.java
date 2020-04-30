@@ -13,7 +13,7 @@ import com.capg.fms.schedule.excepions.NotFound;
 public class AvailabilityErrorController {
 	
 	@ExceptionHandler(NotFound.class)
-	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No availability", code = HttpStatus.NOT_FOUND)
+	@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = "No availability",code = HttpStatus.NOT_FOUND)
 	public void AvailabilityNotFoundException() {
 		
 	}

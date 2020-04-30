@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.capg.fms.schedule.excepions.InvalidInputException;
-import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.service.IAvailabilityService;
 
 @SpringBootTest
@@ -68,7 +67,7 @@ class FmsScheduleMsAvailabilityTests {
 	@Test
 	public void testSourceAndDestinationAirport() throws InvalidInputException {
 		Exception exception = assertThrows(InvalidInputException.class, () -> {
-			 availabilityService.checkSourceAndDestination(446233628412L, "Vizag", "Mumbai");
+			 availabilityService.checkSourceAndDestination("Vizag", "Mumbai");
 		    });
 		 
 		    String expectedMessage = "Flight is not available";
@@ -77,7 +76,7 @@ class FmsScheduleMsAvailabilityTests {
 	}
 	
 	@Test
-	public void testAvailableSeats() throws SeatsAreNotAvailableException {
+	public void testAvailableSeats() throws InvalidInputException {
 		assertTrue(availabilityService.checkSeatAvailability(446233628412L, 21));
 	}
 	

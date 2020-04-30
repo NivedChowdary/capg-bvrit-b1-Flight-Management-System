@@ -9,10 +9,7 @@ package com.capg.fms.schedule.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import com.capg.fms.schedule.excepions.FlightNotFoundException;
 import com.capg.fms.schedule.excepions.InvalidInputException;
-import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.repository.IAvailabilityScheduleRepo;
 import com.capg.fms.schedule.repository.IAvailabilityScheduledFlightRepo;
 
@@ -22,9 +19,6 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	@Autowired
 	IAvailabilityScheduledFlightRepo flightRepository;
 	
-	/*
-	 * @Autowired RestTemplate restTemplate;
-	 */
 	@Autowired
 	IAvailabilityScheduleRepo scheduleRepo;
 	
@@ -42,7 +36,7 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 
 		if(!flightRepository.existsByFlightNumber(flightNumber)) {
 			System.out.println(flightNumber);
-			throw new FlightNotFoundException("FlightNumber with "+flightNumber+" is NOT FOUND");
+			throw new InvalidInputException("No availability");
 		}
 		return "The flight is available";
 	}
@@ -57,11 +51,11 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	***************************************************************************/
 	
 	@Override
-	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws SeatsAreNotAvailableException{
+	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws InvalidInputException{
 		
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
 			if(availableSeats<=0) {
-				throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
+				throw new InvalidInputException("No availability");
 			}
 		}
 //		return flightRepository.existsAvailableSeats(availableSeats);	
@@ -81,7 +75,7 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	public String checkSource(long flightNumber,String sourceAirport) {
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
 			if(!scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
-				throw new InvalidInputException("Source Airport is not valid");
+				throw new InvalidInputException("No availability");
 			}
 		}	
 		return "Source Airport is valid";
@@ -100,7 +94,7 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	public String checkDestination(long flightNumber, String destinationAirport) {
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
 			if(!scheduleRepo.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
-				throw new InvalidInputException("Destination Airport is not valid");
+				throw new InvalidInputException("No availability");
 			}
 		}	
 		return "Destination Airport is valid";
@@ -116,15 +110,15 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	***************************************************************************/
 
 	@Override
-	public String checkSourceAndDestination(long flightNumber, String sourceAirport, String destinationAirport) {
-		if(flightRepository.existsByFlightNumber(flightNumber)) {
+	public String checkSourceAndDestination(String sourceAirport, String destinationAirport) {
+//		if(flightRepository.existsByFlightNumber(flightNumber)) {
 			if(!scheduleRepo.findAll().contains(scheduleRepo.existsSourceAirport(sourceAirport))) {
-				throw new InvalidInputException("Flight is not available");
+				throw new InvalidInputException("No availability");
 			}
 			else if(flightRepository.findAll().contains(scheduleRepo.existsDestinationAirport(destinationAirport))) {
-				throw new InvalidInputException("Flight is not available");
+				throw new InvalidInputException("No availability");
 			}
-		}
+//		}
 		return "Flight is available";
 }
 	
