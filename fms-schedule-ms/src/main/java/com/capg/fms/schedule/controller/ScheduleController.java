@@ -1,10 +1,3 @@
-/***************************************************************
- -Author                : Nived Chowdary
- -Created/Modified Date : 28/04/2020
- -Description           : Controller For ScheduledFlight
- 
-*******************************************************************/
-
 package com.capg.fms.schedule.controller;
 
 import java.util.List;

@@ -1,9 +1,3 @@
-/*************************************************************************
- -Author                : Karthikeswar Rao 
- -Created/Modified Date : 28/04/2020
- -Description           : Controller for checking the availability of flights
-***************************************************************************/
-
 package com.capg.fms.schedule.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +24,7 @@ public class AvailabilityController {
 		}
 		return "The FlightNumber should have 12 digits";
 	}
+	
 	
 	@GetMapping("/{flightNumber}/{availableSeats}")
 	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) throws SeatsAreNotAvailableException {

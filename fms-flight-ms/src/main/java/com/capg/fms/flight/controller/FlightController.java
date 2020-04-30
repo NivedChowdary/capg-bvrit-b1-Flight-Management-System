@@ -1,3 +1,11 @@
+/***************************************************************
+ -Author                : Geetha and Meghana
+ -Created/Modified Date : 28/04/2020
+ -Description           : Controller For Flight
+ 
+*******************************************************************/
+
+
 package com.capg.fms.flight.controller;
 
 import java.util.List;
@@ -36,10 +44,7 @@ public class FlightController {
 	@Autowired
 	FlightServiceImpl flightservice;
 
-	/*
-	 * @Author : @Geetha This createFlight(Flight flight) method will return the
-	 * object of Flight once a new Flight is added in the system Successfully
-	 */
+	
 
 	@PostMapping("/add")
 	public ResponseEntity<Flight> addFlight(@Valid @RequestBody Flight flight) {
@@ -62,6 +67,7 @@ public class FlightController {
 	/*
 	 * This showAll() method will view the details of all flights
 	 */
+	
 	@GetMapping("/all")
 	public ResponseEntity<List<Flight>> getAllFlights() {
 		List<Flight> allFlights = flightservice.getAll();
@@ -69,14 +75,22 @@ public class FlightController {
 	}
 
 	/*
-	 * This modifyFlight method will update Particular Flight 
+	 * This modifyFlight method will update Particular Flight
 	 */
 	@PutMapping("/modify")
 	public ResponseEntity<Flight> modifyFlight(@Valid @RequestBody Flight flight) {
 		Flight newFlight = flightservice.modifyFlight(flight);
 		return new ResponseEntity<Flight>(flight, HttpStatus.OK);
 	}
-	
+
+	@GetMapping("/id/{flightNumber}")
+	public ResponseEntity<Flight> getFlightById(@PathVariable int flightNumber) {
+
+		Flight flight = flightservice.getFlightById(flightNumber);
+
+		return new ResponseEntity<Flight>(flight, HttpStatus.OK);
+	}
+
 	@ExceptionHandler(Exception.class)
 	public String inValid(Exception e) {
 		return e.getMessage();

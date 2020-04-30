@@ -1,3 +1,13 @@
+  
+/***************************************************************
+ -Author                         : Geetha and Meghana
+ -Created/Modified Date          : 28/04/2020
+ -Description                    : IFlightService interface for 
+ 						           Flight Management system
+*******************************************************************/
+
+
+
 package com.capg.fms.flight.service;
 
 import java.util.List;
@@ -15,6 +25,10 @@ public interface IFlightService {
 	
 	public void deleteFlight(long flightNumber);
 		
-	
+	 public Flight getFlightById(long flightNumber);
+	 
 	public List<Flight> getAll();
+	
+	
+
 }
