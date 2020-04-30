@@ -62,6 +62,17 @@ class FmsScheduleMsApplicationTests {
 		assertEquals(scheduledFlight.getSchedule().getDestinationAirport(), service.viewScheduledFlight(101).getSchedule().getDestinationAirport());
 		
 	}
-	
+	@Test
+	public void validateScheduleFlightByScheduleArrivalTime() {
+		
+		assertEquals(scheduledFlight.getSchedule().getArrivalTime(), service.viewScheduledFlight(101).getSchedule().getArrivalTime());
+		
+	}
+	@Test
+	public void validateScheduleFlightByScheduleDepartureTime() {
+		
+		assertEquals(scheduledFlight.getSchedule().getDepartureTime(), service.viewScheduledFlight(101).getSchedule().getDepartureTime());
+		
+	}
 	
 }
