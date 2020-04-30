@@ -29,8 +29,7 @@ public class AvailabilityController {
 		}
 		return "The FlightNumber should have 12 digits";
 	}
-	
-	
+		
 	@GetMapping("/{flightNumber}/{availableSeats}")
 	public boolean checkSeatAvailability(@PathVariable long flightNumber, @PathVariable int availableSeats) throws InvalidInputException {
 		return service.checkSeatAvailability(flightNumber, availableSeats);
