@@ -22,8 +22,9 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	@Autowired
 	IAvailabilityScheduledFlightRepo flightRepository;
 	
-	@Autowired
-	RestTemplate restTemplate;
+	/*
+	 * @Autowired RestTemplate restTemplate;
+	 */
 	
 	@Autowired
 	IAvailabilityScheduleRepo scheduleRepo;
