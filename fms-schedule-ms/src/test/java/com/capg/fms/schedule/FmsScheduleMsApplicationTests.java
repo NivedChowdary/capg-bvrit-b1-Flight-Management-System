@@ -40,7 +40,7 @@ class FmsScheduleMsApplicationTests {
 	
 	@Test
 	public void testFlightNumber() {
-		assertEquals("The flight is available", availabilityService.checkScheduledFlightById(446233628412L));
+		assertEquals("The flight is available", availabilityService.checkScheduledFlightById(446233632412L));
 	}
 	
 	@Test

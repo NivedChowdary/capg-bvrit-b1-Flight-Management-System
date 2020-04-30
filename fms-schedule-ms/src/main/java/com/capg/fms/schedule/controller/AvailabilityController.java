@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.capg.fms.schedule.excepions.InvalidInputException;
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 import com.capg.fms.schedule.service.IAvailabilityService;
 
@@ -23,7 +25,10 @@ public class AvailabilityController {
 
 	@GetMapping("/{flightNumber}")
 	public String checkScheduledFlightById(@PathVariable long flightNumber) {
-		return service.checkScheduledFlightById(flightNumber);
+		if(service.validateFlightId(flightNumber)) {
+			return service.checkScheduledFlightById(flightNumber);
+		}
+		return "The FlightNumber should have 12 digits";
 	}
 	
 	@GetMapping("/{flightNumber}/{availableSeats}")

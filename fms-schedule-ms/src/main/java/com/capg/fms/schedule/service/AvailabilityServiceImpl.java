@@ -9,17 +9,21 @@ package com.capg.fms.schedule.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import com.capg.fms.schedule.excepions.FlightNotFoundException;
 import com.capg.fms.schedule.excepions.InvalidInputException;
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
-import com.capg.fms.schedule.repository.IAvailabilityScheduledFlightRepo;
 import com.capg.fms.schedule.repository.IAvailabilityScheduleRepo;
+import com.capg.fms.schedule.repository.IAvailabilityScheduledFlightRepo;
 
 @Service
 public class AvailabilityServiceImpl implements IAvailabilityService {
 
 	@Autowired
 	IAvailabilityScheduledFlightRepo flightRepository;
+	
+	@Autowired
+	RestTemplate restTemplate;
 	
 	@Autowired
 	IAvailabilityScheduleRepo scheduleRepo;
@@ -56,11 +60,12 @@ public class AvailabilityServiceImpl implements IAvailabilityService {
 	public boolean checkSeatAvailability(long flightNumber, int availableSeats) throws SeatsAreNotAvailableException{
 		
 		if(flightRepository.existsByFlightNumber(flightNumber)) {
-			if(flightRepository.existsAvailableSeats(0)) {
+			if(availableSeats<=0) {
 				throw new SeatsAreNotAvailableException("Seats are not available in "+flightNumber);
 			}
 		}
-		return true;	
+//		return flightRepository.existsAvailableSeats(availableSeats);	
+		return true;
 	}
 
 	/*************************************************************************

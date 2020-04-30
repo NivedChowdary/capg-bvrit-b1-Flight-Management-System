@@ -10,7 +10,7 @@ package com.capg.fms.schedule.service;
 import com.capg.fms.schedule.excepions.SeatsAreNotAvailableException;
 
 public interface IAvailabilityService {
-
+	
 	String checkScheduledFlightById(long flightNumber);
 	boolean checkSeatAvailability(long flightNumber,int availableSeats) throws SeatsAreNotAvailableException;
 	String checkSource(long flightNumber, String sourceAirport);
