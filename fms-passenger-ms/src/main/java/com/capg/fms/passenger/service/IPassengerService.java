@@ -8,9 +8,11 @@ public interface IPassengerService {
 
 
 	Passenger addPassenger(Passenger passenger);
-	boolean deletePassenger(long passengerNum);
-	Passenger getPassenger(long passengerNum);
+	boolean deletePassenger(long passengerNumber);
+	Passenger getPassenger(long passengerNumber);
 	List<Passenger> getAllPasssengers();
 	Passenger updatePassenger(Passenger passenger);
-//	 Passenger getByPassengerName(String passengerName);
+	boolean validatePassengerNumber(long passengerNumber);
+boolean validatePassengerUIN (long passengerUIN);
+void validatePassenger(Passenger passenger);
 }

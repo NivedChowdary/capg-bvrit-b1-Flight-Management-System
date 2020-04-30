@@ -29,26 +29,30 @@ public class PassengerController {
 	@PostMapping("/add")
 	public ResponseEntity<Passenger> addPassenger(@RequestBody Passenger passenger)
 	{
+		 passenger=passengerService.addPassenger(passenger); 
+	      if(passenger== null) 
+	    	  return new ResponseEntity<Passenger>(HttpStatus.BAD_REQUEST);     
+	      
 	   	return new ResponseEntity<Passenger>(passengerService.addPassenger(passenger),HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/delete/num/{passengerNum}")
-    public boolean deletePassenger(@PathVariable("passengerNum") long passengerNum)
+	@DeleteMapping("/delete/number/{passengerNumber}")
+    public boolean deletePassenger(@PathVariable("passengerNumber") long passengerNumber)
     {
-		    return passengerService.deletePassenger(passengerNum);
+		    return passengerService.deletePassenger(passengerNumber);
     }
 	
 	
-	@GetMapping("/num/{passengerNum}")
-	public ResponseEntity<Passenger> getPassenger(@PathVariable("passengerNum") long passengerNum)
+	@GetMapping("/number/{passengerNumber}")
+	public ResponseEntity<Passenger> getPassenger(@PathVariable("passengerNumber") long passengerNumber)
 	{
 		
-		return new ResponseEntity<Passenger>(passengerService.getPassenger(passengerNum),HttpStatus.OK); 
+		return new ResponseEntity<Passenger>(passengerService.getPassenger(passengerNumber),HttpStatus.OK); 
 			
     }
 
 	@GetMapping("/all")
-public ResponseEntity<List<Passenger>> getAllPassengers()
+  public ResponseEntity<List<Passenger>> getAllPassengers()
 {
 	return new ResponseEntity<List<Passenger>>(passengerService.getAllPasssengers(),HttpStatus.OK);
 }
