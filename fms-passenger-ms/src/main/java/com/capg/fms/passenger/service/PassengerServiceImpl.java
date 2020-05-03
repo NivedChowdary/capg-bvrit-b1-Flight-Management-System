@@ -27,8 +27,8 @@ import com.capg.fms.passenger.repository.IPassengerRepo;
 		public Passenger addPassenger(Passenger passenger) {
 			if(passengerRepo.existsById(passenger.getPassengerNumber()))
 				throw new PassengerAlreadyExistException("Passenger with Number: " +passenger.getPassengerNumber()+" is already exist");
-//			if(passengerRepo.existsById(passenger.getPassengerUIN()))
-//				throw new PassengerUinAlreadyExistException("Passenger with UIN: " +passenger.getPassengerUIN()+" is already exist");
+			if(passengerRepo.existsById(passenger.getPassengerUIN()))
+				throw new PassengerUinAlreadyExistException("Passenger with UIN: " +passenger.getPassengerUIN()+" is already exist");
 			return passengerRepo.save(passenger);
 
 		}
@@ -77,33 +77,30 @@ import com.capg.fms.passenger.repository.IPassengerRepo;
 			 return newPassenger;	
 		}
 		@Override
+		@Transactional
 		public boolean validatePassengerNumber(long passengerNumber) {
 		String s=Long.toString(passengerNumber);
 		if(!(s.length()==10 && s.charAt(0)!=0)) {
 			throw new InvalidInputException("Passenger number should be of 10 digits");
 		}
+		else if(passengerRepo.existsById(passengerNumber)==true) 
+		{ throw new PassengerAlreadyExistException("Passenger with passengerNumber ["+passengerNumber+"] already exists");}
 		return true;	}
 		
 		@Override
+		@Transactional
 		public boolean validatePassengerUIN(long passengerUIN) {
 		String s=Long.toString(passengerUIN);
 		if(!(s.length()==12 && s.charAt(0)!=0)) {
 			throw new InvalidInputException("Passenger UIN should be of 12 digits");
 		}
+		else if(passengerRepo.existsById(passengerUIN)==true) {
+			 throw new PassengerUinAlreadyExistException("Passenger with passengerUIN ["+passengerUIN+"] already exists");
+		}
+		
 		return true;	}
 		
-		@Override
-		public void validatePassenger(Passenger passenger) {
-			//VALIDATE PASSENGER NUMBER
-			long passengerNumber=passenger.getPassengerNumber();
-		    this.validatePassengerNumber(passengerNumber);
-		    
-		    //VALIDATE PASSENGER UIN
-			long passengerUIN=passenger.getPassengerUIN();
-			this.validatePassengerUIN(passengerUIN);
 		}
 
 		
 
-}
-	

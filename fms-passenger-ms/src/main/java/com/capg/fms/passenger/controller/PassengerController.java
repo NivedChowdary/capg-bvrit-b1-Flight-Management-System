@@ -4,6 +4,8 @@ package com.capg.fms.passenger.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +29,14 @@ public class PassengerController {
 	PassengerServiceImpl passengerService;
 	
 	@PostMapping("/add")
-	public ResponseEntity<Passenger> addPassenger(@RequestBody Passenger passenger)
+	public ResponseEntity<Passenger> addPassenger(@Valid @RequestBody Passenger passenger)
 	{
 		 passenger=passengerService.addPassenger(passenger); 
 	      if(passenger== null) 
-	    	  return new ResponseEntity<Passenger>(HttpStatus.BAD_REQUEST);     
-	      
-	   	return new ResponseEntity<Passenger>(passengerService.addPassenger(passenger),HttpStatus.OK);
+	      { return new ResponseEntity<Passenger>(HttpStatus.BAD_REQUEST);}
+	      if(passengerService.validatePassengerNumber(passenger.getPassengerNumber()) && passengerService.validatePassengerUIN(passenger.getPassengerUIN())) 
+	   	{return new ResponseEntity<Passenger>(passengerService.addPassenger(passenger),HttpStatus.OK);}
+	      return new ResponseEntity<Passenger>(HttpStatus.BAD_REQUEST);
 	}
 	
 	@DeleteMapping("/delete/number/{passengerNumber}")
@@ -58,9 +61,10 @@ public class PassengerController {
 }
 
 	@PutMapping("/update")
-	public ResponseEntity<Passenger> updatePassenger(@RequestBody Passenger passenger)
-	{
-		   return new ResponseEntity<Passenger>(passengerService.updatePassenger(passenger),HttpStatus.OK);
+	public ResponseEntity<Passenger> updatePassenger(@Valid @RequestBody Passenger passenger){
+	 if(passengerService.validatePassengerNumber(passenger.getPassengerNumber()) && passengerService.validatePassengerUIN(passenger.getPassengerUIN())) 
+	{ return new ResponseEntity<Passenger>(passengerService.updatePassenger(passenger),HttpStatus.OK);}
+	return new ResponseEntity<Passenger>(HttpStatus.BAD_REQUEST);
 	}
 
 	

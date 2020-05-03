@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.fms.passenger.exceptions.EmptyPassengerListException;
+import com.capg.fms.passenger.exceptions.InvalidInputException;
 import com.capg.fms.passenger.exceptions.PassengerAlreadyExistException;
 import com.capg.fms.passenger.exceptions.PassengerNotFoundException;
 import com.capg.fms.passenger.exceptions.PassengerUinAlreadyExistException;
@@ -18,12 +19,12 @@ import com.capg.fms.passenger.exceptions.PassengerUinAlreadyExistException;
 	@ControllerAdvice
 	public class PassengerErrorController {
 
-//		@ResponseStatus(code = HttpStatus.ALREADY_REPORTED,reason = "Passenger Already Exist")
-//		@ExceptionHandler(PassengerAlreadyExistException.class)
-//		public void handlePassengerAlreadyExistException()
-//		{
-////		      To Handle Passenger Already Exist Exception	
-//		}
+		@ResponseStatus(code = HttpStatus.ALREADY_REPORTED,reason = "Passenger Already Exist")
+		@ExceptionHandler(PassengerAlreadyExistException.class)
+		public void handlePassengerAlreadyExistException()
+		{
+//		      To Handle Passenger Already Exist Exception	
+		}
 		
 		@ResponseStatus(code = HttpStatus.NOT_FOUND,reason = "Passenger Not Found ")
 		@ExceptionHandler(PassengerNotFoundException.class)
@@ -45,6 +46,13 @@ import com.capg.fms.passenger.exceptions.PassengerUinAlreadyExistException;
 	public void handlePassengerUinAlreadyExistListException()
 	{
 	       //To Handle  Empty Passenger UIN Already Exist Exception	
+	}
+
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST,reason = "Invalid Input")
+	@ExceptionHandler(InvalidInputException.class)
+	public void handleInvalidInputException()
+	{
+	       //To Handle  Empty Invalid Input Exception	
 	}
 
 

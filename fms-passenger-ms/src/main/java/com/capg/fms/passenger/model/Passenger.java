@@ -3,6 +3,10 @@ package com.capg.fms.passenger.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name="Passenger_info")
@@ -10,7 +14,11 @@ public class Passenger {
 	
      @Id
 	private long passengerNumber;
+     @NotNull
+     @Size(min=3,max=40)
 	private String passengerName;
+     @NotNull
+     @Range(min=10, max=80)
 	private int passengerAge;
 	private long passengerUIN;
 	private double luggage;

@@ -12,7 +12,8 @@ public interface IPassengerService {
 	Passenger getPassenger(long passengerNumber);
 	List<Passenger> getAllPasssengers();
 	Passenger updatePassenger(Passenger passenger);
+	
 	boolean validatePassengerNumber(long passengerNumber);
-boolean validatePassengerUIN (long passengerUIN);
-void validatePassenger(Passenger passenger);
+    boolean validatePassengerUIN (long passengerUIN);
+
 }
